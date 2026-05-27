@@ -54,4 +54,14 @@ Privacy is our core value. **Baca.** has no backend, no analytics, and no extern
 
 ---
 
+## 🤝 Contributing
+Contributions are highly welcome! Whether it's improving the UI, fixing bugs, or porting this PWA to a native Android/iOS application (e.g., using Capacitor or Cordova), feel free to:
+1. Fork the repository.
+2. Create your feature branch.
+3. Open a Pull Request.
+
+If you are interested in creating an APK version, please feel free to port this project. We appreciate any effort to make "Baca." more accessible!
+
+---
+
 *Built for those who value focus and simplicity.*
