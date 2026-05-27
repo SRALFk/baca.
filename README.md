@@ -3,6 +3,7 @@
 **Baca.** is a lightweight, privacy-first Progressive Web App (PWA) designed for a distraction-free, personal reading experience. Built to run entirely offline, it turns your browser into a clean and customizable e-book library.
 
 ---
+<img width="1443" height="1522" alt="ResizedImage_2026-05-28_05-01-55_8292" src="https://github.com/user-attachments/assets/6164646f-4719-4ffd-b5b1-6309a8bd5c3d" />
 
 ## 🚀 Key Features
 
