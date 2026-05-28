@@ -2,7 +2,7 @@
 
 # 📖 Baca.
 
-**A privacy-first, local e-reader built with Material 3 Expressive design.**
+**A privacy-first, local e-book reader built with Material 3 Expressive design.**
 
 ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
 ![PWA Ready](https://img.shields.io/badge/PWA-Ready-blue.svg)
