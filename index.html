@@ -763,7 +763,7 @@
             let bgStyle = ""; let textOverlay = ""; let baseClass = "";
             if(book.coverBase64) {
                 bgStyle = `background-image: url('${book.coverBase64}'); background-size: cover; background-position: top center;`;
-                baseClass = "text-white border border-black/10"; 
+                baseClass = "text-white"; 
                 textOverlay = `<div class="absolute inset-x-0 bottom-0 h-3/4 bg-gradient-to-t from-black/90 via-black/40 to-transparent pointer-events-none z-0 rounded-b-inherit"></div>`;
             } else {
                 const colors = ['bg-m3-primaryContainer text-m3-onPrimaryContainer', 'bg-m3-secondaryContainer text-m3-onSecondaryContainer', 'bg-m3-surfaceVariant text-m3-onSurfaceVariant'];
