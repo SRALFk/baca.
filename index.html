@@ -50,7 +50,6 @@
             }
         }
 
-        // PWA Dynamic Manifest Injection
         const manifestObj = {
             name: "Baca. Reader",
             short_name: "Baca.",
@@ -104,7 +103,6 @@
         .dark .hl-pink { background-color: rgba(190, 24, 93, 0.4); }
         .dark .hl-blue { background-color: rgba(29, 78, 216, 0.4); }
 
-        /* Helper to hide scrollbar but keep functionality */
         .hide-scroll::-webkit-scrollbar { display: none; }
         .hide-scroll { -ms-overflow-style: none; scrollbar-width: none; }
 
@@ -121,6 +119,7 @@
 
     <!-- VIEW: LIBRARY -->
     <div id="library-view" class="absolute inset-0 flex flex-col overflow-hidden transition-transform duration-500 origin-bottom bg-m3-bg z-10 w-full">
+        <!-- Solid background sticky header -->
         <header id="main-header" class="pt-10 pb-5 px-6 sticky top-0 bg-m3-bg z-40 w-full transition-shadow duration-300">
             <div class="flex justify-between items-center mb-6">
                 <div>
@@ -128,17 +127,19 @@
                     <p id="library-count" class="text-m3-onSurfaceVariant text-base font-medium">0 Books</p>
                 </div>
                 <div class="flex gap-2">
-                    <button onclick="openModal('global-settings-modal', 'global-settings-sheet')" class="btn-morph w-14 h-14 bg-m3-primary/10 dark:bg-m3-surfaceVariant text-m3-primary dark:text-m3-onSurfaceVariant shadow-sm flex items-center justify-center rounded-[20px] border border-m3-primary/20 dark:border-transparent">
+                    <button onclick="openModal('global-settings-modal', 'global-settings-sheet')" class="btn-morph p-4 shadow-sm flex items-center justify-center bg-m3-primary/10 text-m3-primary border border-m3-primary/20 dark:bg-m3-surfaceVariant dark:text-m3-onSurfaceVariant dark:border-transparent">
                         <i data-lucide="settings"></i>
                     </button>
                 </div>
             </div>
-            <div class="relative w-full">
-                <i data-lucide="search" class="absolute left-6 top-1/2 transform -translate-y-1/2 text-m3-primary dark:text-m3-onSurfaceVariant opacity-90 z-10"></i>
-                <input type="text" id="global-search" placeholder="Search books..." class="w-full bg-m3-primary/10 dark:bg-m3-surfaceVariant text-m3-primary dark:text-m3-onSurfaceVariant placeholder-m3-primary/60 dark:placeholder-m3-onSurfaceVariant/60 rounded-full py-4 pl-14 pr-4 outline-none focus:ring-2 focus:ring-m3-primary transition-all font-bold border border-m3-primary/20 dark:border-transparent focus:border-m3-primary shadow-sm relative z-0">
+            <!-- Search bar with dynamic theme text color -->
+            <div class="relative w-full text-m3-primary dark:text-m3-onSurfaceVariant">
+                <i data-lucide="search" class="absolute left-6 top-1/2 transform -translate-y-1/2 opacity-70"></i>
+                <input type="text" id="global-search" placeholder="Search books..." class="w-full rounded-full py-4 pl-14 pr-4 outline-none transition-all font-medium shadow-sm bg-m3-primary/10 border border-m3-primary/20 focus:ring-2 focus:ring-m3-primary focus:bg-m3-primary/20 dark:bg-m3-surfaceVariant dark:border-transparent dark:focus:bg-m3-surfaceVariant text-inherit placeholder:text-inherit placeholder:opacity-60">
             </div>
         </header>
 
+        <!-- Main Content Area -->
         <div id="library-content-scroll" class="flex-1 overflow-y-auto px-6 pt-2 pb-32">
             <div id="loading-state" class="hidden mb-8 p-5 bg-m3-secondaryContainer text-m3-onSecondaryContainer rounded-[28px] shadow-sm">
                 <div class="flex justify-between items-end mb-3">
@@ -153,8 +154,8 @@
             <!-- Top Books / Continue Reading Section (Horizontal Slider) -->
             <div id="continue-reading-section" class="hidden mb-8 -mx-6">
                 <h2 id="str-continue-reading" class="text-lg font-bold mb-4 text-m3-onBg px-6 tracking-tight">Lanjutkan Membaca</h2>
-                <!-- Slider container with snap proximity & scroll-padding to fix left edge issues -->
-                <div id="top-books-slider" class="flex gap-4 overflow-x-auto snap-x snap-proximity px-6 pb-6 hide-scroll [scroll-padding-left:1.5rem]">
+                <!-- Slider container with snap proximity & scroll padding -->
+                <div id="top-books-slider" class="flex gap-4 overflow-x-auto snap-x snap-proximity px-6 pb-4 hide-scroll" style="scroll-padding-left: 1.5rem;">
                     <!-- Top books injected here -->
                 </div>
             </div>
@@ -169,8 +170,8 @@
         </div>
 
         <div class="fixed bottom-8 right-6 z-50">
-            <!-- Upload FAB with High Contrast Primary Color -->
-            <button onclick="document.getElementById('doc-upload').click();" class="btn-morph flex items-center justify-center w-16 h-16 bg-m3-primary text-m3-onPrimary shadow-2xl cursor-pointer border border-white/20 dark:border-transparent">
+            <!-- Menambahkan buku, tombol FAB yang sangat kontras warnanya -->
+            <button onclick="document.getElementById('doc-upload').click();" class="btn-morph flex items-center justify-center w-16 h-16 bg-m3-primary text-m3-onPrimary shadow-xl cursor-pointer">
                 <i data-lucide="plus" class="w-8 h-8"></i>
             </button>
             <input type="file" id="doc-upload" accept=".epub,.pdf" class="hidden">
@@ -210,8 +211,8 @@
         
         <div id="reader-search-bar" class="hidden bg-m3-surfaceVariant px-4 pb-4 shadow-sm z-20 transition-all w-full shrink-0">
             <div class="flex gap-2">
-                <input type="text" id="inbook-search-input" placeholder="Search specific text..." class="flex-1 bg-m3-primary/10 dark:bg-m3-surface text-m3-primary dark:text-m3-onSurface placeholder-m3-primary/60 dark:placeholder-m3-onSurface/60 rounded-full px-4 py-2 outline-none text-sm font-bold border border-m3-primary/20 dark:border-transparent">
-                <button id="btn-exec-search" class="bg-m3-primary text-m3-onPrimary px-4 py-2 rounded-full font-bold text-sm btn-morph shadow-sm border border-white/20 dark:border-transparent">Search</button>
+                <input type="text" id="inbook-search-input" placeholder="Search specific text..." class="flex-1 bg-m3-surface text-m3-onSurface rounded-full px-4 py-2 outline-none text-sm font-medium">
+                <button id="btn-exec-search" class="bg-m3-primary text-m3-onPrimary px-4 py-2 rounded-full font-medium text-sm btn-morph">Search</button>
             </div>
             <div id="search-results-panel" class="hidden mt-2 max-h-40 overflow-y-auto overflow-x-hidden rounded-xl bg-m3-surface text-sm shadow-inner"></div>
         </div>
@@ -363,7 +364,7 @@
                 <i data-lucide="info"></i> <span>View Instructions</span>
             </button>
 
-            <button onclick="history.back()" class="btn-morph w-full mt-2 py-4 bg-m3-primary/10 dark:bg-m3-surfaceVariant text-m3-primary dark:text-m3-onSurfaceVariant font-bold text-lg border border-m3-primary/20 dark:border-transparent">Close</button>
+            <button onclick="history.back()" class="btn-morph w-full mt-2 py-4 bg-m3-surfaceVariant text-m3-onSurfaceVariant font-bold text-lg">Close</button>
         </div>
     </div>
 
@@ -373,7 +374,7 @@
             <div class="w-12 h-1.5 bg-m3-onSurfaceVariant/30 rounded-full mx-auto mb-6"></div>
             <h3 id="opt-title" class="text-lg font-bold mb-6 text-m3-onSurface text-center truncate px-2">Book Options</h3>
             <div class="flex flex-col gap-3">
-                <button onclick="triggerEditView()" class="flex items-center gap-4 w-full p-4 bg-m3-primaryContainer text-m3-onPrimaryContainer rounded-2xl font-bold btn-morph border border-m3-primary/20 dark:border-transparent"><i data-lucide="edit-3"></i> <span>Edit Book Details</span></button>
+                <button onclick="triggerEditView()" class="flex items-center gap-4 w-full p-4 bg-m3-primaryContainer text-m3-onPrimaryContainer rounded-2xl font-bold btn-morph"><i data-lucide="edit-3"></i> <span>Edit Book Details</span></button>
                 <button onclick="triggerDeleteView()" class="flex items-center gap-4 w-full p-4 bg-red-100 text-red-700 dark:bg-red-900/40 dark:text-red-400 rounded-2xl font-bold btn-morph"><i data-lucide="trash-2"></i> <span>Delete Permanently</span></button>
             </div>
             <button onclick="history.back()" class="btn-morph w-full mt-4 py-4 bg-transparent text-m3-onSurface font-bold">Cancel</button>
@@ -387,7 +388,7 @@
             <input type="hidden" id="edit-book-id">
             
             <label class="text-sm font-bold opacity-70 block mb-2">Book Title</label>
-            <input type="text" id="edit-book-title" class="w-full bg-m3-primary/10 dark:bg-m3-surfaceVariant text-m3-primary dark:text-m3-onSurfaceVariant p-4 rounded-2xl mb-5 font-bold outline-none focus:ring-2 focus:ring-m3-primary border border-m3-primary/20 dark:border-transparent">
+            <input type="text" id="edit-book-title" class="w-full bg-m3-surfaceVariant text-m3-onSurfaceVariant p-4 rounded-2xl mb-5 font-medium outline-none focus:ring-2 focus:ring-m3-primary">
             
             <label class="text-sm font-bold opacity-70 block mb-2">Cover Image (Gallery)</label>
             <input type="file" id="edit-book-cover" accept="image/*" class="w-full text-sm mb-5 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-m3-primaryContainer file:text-m3-onPrimaryContainer hover:file:bg-m3-primaryContainer/80 z-10 relative">
@@ -403,7 +404,7 @@
 
             <div class="flex gap-2">
                 <button onclick="closeEditModal()" class="flex-1 py-3 bg-transparent text-m3-onSurface font-bold rounded-full btn-morph">Cancel</button>
-                <button onclick="saveBookEdit()" class="flex-1 py-3 bg-m3-primary text-m3-onPrimary font-bold rounded-full btn-morph shadow-md border border-white/20 dark:border-transparent">Save</button>
+                <button onclick="saveBookEdit()" class="flex-1 py-3 bg-m3-primary text-m3-onPrimary font-bold rounded-full btn-morph shadow-md">Save</button>
             </div>
         </div>
     </div>
@@ -432,11 +433,11 @@
     <div id="note-modal" onclick="if(event.target === this) history.back()" class="hidden modal-overlay fixed inset-0 bg-black/60 z-[120] flex items-center justify-center opacity-0 p-4">
         <div class="modal-content bg-m3-surface w-full max-w-sm rounded-[32px] p-6 transform scale-95 border border-m3-surfaceVariant shadow-2xl" id="note-sheet">
             <h3 class="text-xl font-bold mb-4 text-m3-onSurface flex items-center gap-2"><i data-lucide="notebook-pen" class="w-5 h-5"></i> Tambah Catatan</h3>
-            <textarea id="note-input-text" class="w-full h-32 bg-m3-primary/10 dark:bg-m3-surfaceVariant text-m3-primary dark:text-m3-onSurfaceVariant p-4 rounded-2xl mb-5 font-medium outline-none focus:ring-2 focus:ring-m3-primary resize-none border border-m3-primary/20 dark:border-transparent" placeholder="Tuliskan catatanmu di sini..."></textarea>
+            <textarea id="note-input-text" class="w-full h-32 bg-m3-surfaceVariant text-m3-onSurfaceVariant p-4 rounded-2xl mb-5 font-medium outline-none focus:ring-2 focus:ring-m3-primary resize-none" placeholder="Tuliskan catatanmu di sini..."></textarea>
             
             <div class="flex gap-2">
                 <button onclick="_closeModalAction('note-modal', 'note-sheet', true)" class="flex-1 py-3 bg-transparent text-m3-onSurface font-bold rounded-full btn-morph">Batal</button>
-                <button onclick="saveNoteAnnotation()" class="flex-1 py-3 bg-m3-primary text-m3-onPrimary font-bold rounded-full btn-morph shadow-md border border-white/20 dark:border-transparent">Simpan</button>
+                <button onclick="saveNoteAnnotation()" class="flex-1 py-3 bg-m3-primary text-m3-onPrimary font-bold rounded-full btn-morph shadow-md">Simpan</button>
             </div>
         </div>
     </div>
@@ -451,7 +452,7 @@
             
             <div class="flex gap-2">
                 <button onclick="deleteAnnotationById()" class="py-3 px-5 bg-red-100 text-red-700 dark:bg-red-900/40 dark:text-red-400 font-bold rounded-full btn-morph shadow-sm flex items-center justify-center"><i data-lucide="trash-2" class="w-5 h-5"></i></button>
-                <button onclick="closeShowNoteModal()" class="flex-1 py-3 bg-m3-primary text-m3-onPrimary font-bold rounded-full btn-morph shadow-md border border-white/20 dark:border-transparent">Tutup</button>
+                <button onclick="closeShowNoteModal()" class="flex-1 py-3 bg-m3-primary text-m3-onPrimary font-bold rounded-full btn-morph shadow-md">Tutup</button>
             </div>
         </div>
     </div>
@@ -481,8 +482,7 @@
     <script>
         pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.worker.min.js';
 
-        // M3 Light Palettes modified to use true Material You Surface Container colors (slightly tinted background instead of flat white)
-        // Also adjusted on-background/on-surface-variant for much stronger contrast!
+        // M3 Light Palettes modified to use true Material You Surface Container colors
         const M3_PALETTES = {
             purple: { light: `--md-sys-color-primary:#6750A4;--md-sys-color-on-primary:#FFFFFF;--md-sys-color-primary-container:#EADDFF;--md-sys-color-on-primary-container:#21005D;--md-sys-color-secondary-container:#E8DEF8;--md-sys-color-on-secondary-container:#1D192B;--md-sys-color-tertiary-container:#FFD8E4;--md-sys-color-on-tertiary-container:#31111D;--md-sys-color-background:#EAE4F2;--md-sys-color-on-background:#1D1B20;--md-sys-color-surface:#EAE4F2;--md-sys-color-on-surface:#1D1B20;--md-sys-color-surface-variant:#D6CDE2;--md-sys-color-on-surface-variant:#313033;`, dark: `--md-sys-color-primary:#D0BCFF;--md-sys-color-on-primary:#381E72;--md-sys-color-primary-container:#4F378B;--md-sys-color-on-primary-container:#EADDFF;--md-sys-color-secondary-container:#4A4458;--md-sys-color-on-secondary-container:#E8DEF8;--md-sys-color-tertiary-container:#633B48;--md-sys-color-on-tertiary-container:#FFD8E4;--md-sys-color-background:#1C1B1E;--md-sys-color-on-background:#E6E1E5;--md-sys-color-surface:#1C1B1E;--md-sys-color-on-surface:#E6E1E5;--md-sys-color-surface-variant:#49454F;--md-sys-color-on-surface-variant:#CAC4D0;` },
             green: { light: `--md-sys-color-primary:#006C4C;--md-sys-color-on-primary:#FFFFFF;--md-sys-color-primary-container:#89F8D6;--md-sys-color-on-primary-container:#002114;--md-sys-color-secondary-container:#CCE8DB;--md-sys-color-on-secondary-container:#052016;--md-sys-color-tertiary-container:#BEEAF6;--md-sys-color-on-tertiary-container:#001F29;--md-sys-color-background:#E2EDE6;--md-sys-color-on-background:#1A1C1A;--md-sys-color-surface:#E2EDE6;--md-sys-color-on-surface:#1A1C1A;--md-sys-color-surface-variant:#CCDBCF;--md-sys-color-on-surface-variant:#2F3633;`, dark: `--md-sys-color-primary:#6CDBBA;--md-sys-color-on-primary:#003825;--md-sys-color-primary-container:#005138;--md-sys-color-on-primary-container:#89F8D6;--md-sys-color-secondary-container:#334B3F;--md-sys-color-on-secondary-container:#CCE8DB;--md-sys-color-tertiary-container:#204D59;--md-sys-color-on-tertiary-container:#BEEAF6;--md-sys-color-background:#191C1A;--md-sys-color-on-background:#E1E3DF;--md-sys-color-surface:#191C1A;--md-sys-color-on-surface:#E1E3DF;--md-sys-color-surface-variant:#404943;--md-sys-color-on-surface-variant:#BFC9C3;` },
@@ -769,10 +769,8 @@
             
             let augmentedText = text;
             if (annots && annots.length > 0) {
-                // Descending by length to not break overlapping parts
                 [...annots].sort((a,b) => b.text.length - a.text.length).forEach(a => {
                     const esc = a.text.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-                    // Replace first occurrence in the node to avoid over-highlighting everything
                     augmentedText = augmentedText.replace(new RegExp(esc, ''), `|||HL|${a.id}|||${a.text}|||ENDHL|||`);
                 });
             }
@@ -791,7 +789,6 @@
                 }).replace(/\|\|\|ENDHL\|\|\|/g, '</mark>');
             }
 
-            // Decorate highlights with notes so they stand out
             html = html.replace(/data-hasnote="true">/g, 'data-hasnote="true" style="border-bottom: 2px underline dotted currentColor">');
 
             return html;
@@ -806,13 +803,11 @@
             }
             document.getElementById('dynamic-theme').innerHTML = `:root { ${rootVars} }`;
             
-            // Meta theme color update for PWA standalone UI
             const metaTheme = document.querySelector('meta[name="theme-color"]');
             if(metaTheme) {
                 if(isDark && isAmoled) metaTheme.setAttribute("content", "#000000");
                 else if (isDark) metaTheme.setAttribute("content", "#1C1B1E");
                 else {
-                    // Extract background hex from rootVars to match the tinted light mode
                     const bgMatch = rootVars.match(/--md-sys-color-background:(#[A-Fa-f0-9]{6})/);
                     metaTheme.setAttribute("content", bgMatch ? bgMatch[1] : "#EAE4F2");
                 }
@@ -934,7 +929,7 @@
         
         applyThemeToDOM();
 
-        // First Time User (Shows Welcome Modal)
+        // First Time User
         if (!localStorage.getItem('first_time_seen_v2')) {
             setTimeout(() => {
                 pushAppHistory('modal-welcome');
@@ -947,7 +942,7 @@
             const m = document.getElementById('welcome-modal'); const s = document.getElementById('welcome-sheet');
             s.classList.add('scale-95'); m.classList.add('opacity-0');
             setTimeout(() => m.classList.add('hidden'), 300);
-            localStorage.setItem('first_time_seen_v2', 'true'); // Flag it as seen
+            localStorage.setItem('first_time_seen_v2', 'true');
         };
 
         let typoPrefs = JSON.parse(localStorage.getItem('typo_prefs')) || { size: '1.2rem', align: 'left', font: 'Lora' };
@@ -975,7 +970,6 @@
 
         async function loadLibrary() { try { library = await localforage.getItem('pdf_epub_master') || []; renderLibrary(); } catch (e) { console.error(e); } }
         
-        // Helper to generate Book Card Element (Reusable for slider and grid)
         function createBookCard(book, isSlider = false, index = 0) {
             const progress = book.progressPct || 0; 
             const card = document.createElement('div');
@@ -1082,9 +1076,10 @@
                     const card = createBookCard(book, true, idx);
                     DOM.topSlider.appendChild(card);
                 });
-                // Tambahkan spacer kosong di ujung kanan biar mentoknya gak nabrak layar
+                
+                // Tambahkan elemen spacer kosong di akhir supaya kartu terakhir gak mentok ke layar pinggir kanan
                 const spacer = document.createElement('div');
-                spacer.className = "w-2 shrink-0";
+                spacer.className = "w-2 shrink-0 snap-align-none";
                 DOM.topSlider.appendChild(spacer);
             } else {
                 DOM.topSection.classList.add('hidden');
@@ -1180,20 +1175,24 @@
         function openBook(book) {
             activeBookId = book.id; pushAppHistory(`reader-${book.id}`);
             
-            // Animasi transisi layar reader naik
             DOM.libView.style.transform = 'scale(0.95)'; 
             DOM.readView.classList.remove('translate-y-full');
             DOM.title.textContent = book.title; 
             
-            // Tampilkan M3 Loading Spinner dulu
             const loader = document.getElementById('reader-loading-overlay');
-            loader.classList.remove('hidden', 'opacity-0');
+            loader.classList.remove('hidden');
+            requestAnimationFrame(() => loader.classList.remove('opacity-0'));
             
             DOM.inner.innerHTML = ''; 
             DOM.tocList.innerHTML = '';
             
-            // Defer sinkronisasi berat DOM pake timeout,
-            // Kasih jeda waktu 300ms supaya animasi layar translate-y-full selesai dulu tanpa ngelag
+            // Putuskan observer saat buka buku biar gak bentrok
+            if (observer) observer.disconnect();
+
+            // Set visual progress awal sebelum sensor jalan
+            DOM.progBar.style.width = `${book.progressPct || 0}%`; 
+            DOM.progTxt.textContent = `${book.progressPct || 0}%`;
+
             setTimeout(() => {
                 let hCounter = 0; 
                 const fragment = document.createDocumentFragment(); 
@@ -1226,20 +1225,29 @@
                 
                 if(hCounter === 0) DOM.tocList.innerHTML = "<p class='text-sm opacity-50 block p-3'>No Table of Contents.</p>";
 
-                setupIntersectionObserver();
                 DOM.searchBar.classList.add('hidden'); DOM.searchRes.classList.add('hidden'); DOM.searchInput.value = '';
 
-                // Sembunyikan loading dengan transisi smooth
                 loader.classList.add('opacity-0');
                 setTimeout(() => loader.classList.add('hidden'), 300);
 
-                // Auto Scroll setelah semua ter-render
+                // Auto Scroll ke node terakhir yang dibaca
                 setTimeout(() => {
-                    if (book.lastReadId) { const target = document.getElementById(book.lastReadId); if (target) target.scrollIntoView({ behavior: 'auto', block: 'center' }); } 
-                    else { DOM.readContent.scrollTo(0,0); }
-                }, 100);
+                    if (book.lastReadId) { 
+                        const target = document.getElementById(book.lastReadId); 
+                        if (target) target.scrollIntoView({ behavior: 'auto', block: 'center' }); 
+                    } else { 
+                        DOM.readContent.scrollTo(0,0); 
+                    }
+
+                    // BUG FIX: Aktifkan Observer SETELAH proses auto-scroll selesai sepenuhnya. 
+                    // Jeda 300ms mencegah pembacaan palsu di node-0 yang me-reset progres ke 0%.
+                    setTimeout(() => {
+                        setupIntersectionObserver();
+                    }, 300);
+
+                }, 100); 
                 
-            }, 300); 
+            }, 600); 
         }
 
         function _closeReaderAction(isFromHistory = false) {
@@ -1248,7 +1256,6 @@
             if(observer) observer.disconnect(); renderLibrary(DOM.globalSearch.value); activeBookId = null;
             window.getSelection().removeAllRanges();
             
-            // Hide selection menu automatically on close
             const menu = document.getElementById('selection-menu');
             if(menu) {
                 menu.classList.add('opacity-0', 'scale-95');
@@ -1393,12 +1400,10 @@
             
             if (text.length > 0 && sel.rangeCount > 0) {
                 const range = sel.getRangeAt(0);
-                // Ensure selection is inside reader inner content
                 if (!DOM.inner.contains(range.commonAncestorContainer)) return;
 
-                // Find the closest node element
                 let curr = range.commonAncestorContainer;
-                if (curr.nodeType === 3) curr = curr.parentNode; // jump from text to element
+                if (curr.nodeType === 3) curr = curr.parentNode; 
                 const nodeEl = curr.closest('[id^="node-"]');
                 if (!nodeEl) return;
                 
@@ -1408,7 +1413,7 @@
                 menu.classList.remove('hidden');
 
                 const rect = range.getBoundingClientRect();
-                const menuWidth = menu.offsetWidth || 260; // fallback width
+                const menuWidth = menu.offsetWidth || 260; 
                 const padding = 16;
                 
                 let targetLeft = rect.left + (rect.width / 2) - (menuWidth / 2);
@@ -1416,12 +1421,11 @@
                 if (targetLeft + menuWidth > window.innerWidth - padding) targetLeft = window.innerWidth - menuWidth - padding;
                 
                 let targetTop = rect.top - 55;
-                if (targetTop < 80) targetTop = rect.bottom + 15; // place below text if clipped at top
+                if (targetTop < 80) targetTop = rect.bottom + 15; 
 
                 menu.style.top = `${targetTop}px`;
                 menu.style.left = `${targetLeft}px`;
                 
-                // Allow CSS transition
                 requestAnimationFrame(() => {
                     menu.classList.remove('opacity-0', 'scale-95');
                 });
@@ -1430,7 +1434,6 @@
             }
         });
 
-        // Hide when clicking outside
         DOM.readContent.addEventListener('mousedown', (e) => {
             if(!window.getSelection().toString().trim()) {
                 hideSelectionMenu();
@@ -1456,7 +1459,6 @@
             book.annotations.push(annotObj);
             await localforage.setItem('pdf_epub_master', library);
             
-            // Re-render the specific node to show highlight
             const nodeEl = document.getElementById(`node-${annotObj.nodeIdx}`);
             if(nodeEl && book.nodes[annotObj.nodeIdx]) {
                 const currentAnnots = book.annotations.filter(a => a.nodeIdx === annotObj.nodeIdx);
@@ -1499,7 +1501,6 @@
         };
         
         window.showAnnotationDetails = function(annotId) {
-            // Prevent toggling fullscreen or menus
             event.preventDefault();
             event.stopPropagation();
             
@@ -1559,7 +1560,6 @@
             
             closeShowNoteModal();
             
-            // Re-render
             const nodeEl = document.getElementById(`node-${nodeIdx}`);
             if(nodeEl && book.nodes[nodeIdx]) {
                 const currentAnnots = book.annotations.filter(a => a.nodeIdx === nodeIdx);
@@ -1590,7 +1590,6 @@
                 const controller = new AbortController();
                 const timeoutId = setTimeout(() => controller.abort(), 8000);
 
-                // Fetch Wikipedia & Dictionary in parallel (dengan timeout 8 detik)
                 const [resWiki, resSearch, resDict, resWiktionary] = await Promise.allSettled([
                     fetch(`https://${wikiLang}.wikipedia.org/api/rest_v1/page/summary/${q}`, { signal: controller.signal }),
                     fetch(`https://${wikiLang}.wikipedia.org/w/api.php?action=query&list=search&srsearch=${q}&utf8=&format=json&origin=*`, { signal: controller.signal }),
@@ -1599,7 +1598,6 @@
                 ]);
                 clearTimeout(timeoutId);
 
-                // Parse Wikipedia
                 if (resWiki.status === 'fulfilled' && resWiki.value.ok) {
                     const data = await resWiki.value.json();
                     wikiHtml = `
@@ -1617,7 +1615,6 @@
                     }
                 }
 
-                // Parse Dictionary API (EN)
                 if (resDict.status === 'fulfilled' && resDict.value.ok) {
                     try {
                         const dataDict = await resDict.value.json();
@@ -1638,18 +1635,15 @@
                     } catch(e) {}
                 }
 
-                // Parse Wiktionary
                 if (resWiktionary.status === 'fulfilled' && resWiktionary.value.ok) {
                     try {
                         const dataWikt = await resWiktionary.value.json();
-                        // Wiktionary API /page/definition/ returns language code objects like {"id": [{"partOfSpeech": "...", "definitions": [{"definition": "..."}]}]}
                         let wiktMeanings = '';
                         Object.keys(dataWikt).forEach(langCode => {
                             const entries = dataWikt[langCode];
                             entries.slice(0, 2).forEach(entry => {
                                 if(entry.definitions && entry.definitions.length > 0) {
                                     const defs = entry.definitions.slice(0, 2).map(d => {
-                                        // Some definitions might contain HTML string
                                         let text = d.definition.replace(/<[^>]*>?/gm, ''); 
                                         return `<li class="mb-1">${text}</li>`;
                                     }).join('');
@@ -1839,7 +1833,6 @@
             return stack.join('/');
         }
 
-        // Service Worker Setup for PWA functionality
         if ('serviceWorker' in navigator) {
             const swCode = `
             const CACHE_NAME = 'baca-pwa-v2';
