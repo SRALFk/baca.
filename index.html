@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     
-    <!-- PWA Meta Tags -->
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="theme-color" content="#1C1B1E">
@@ -58,8 +57,6 @@
             transition: background-color 0.4s ease, color 0.4s ease; -webkit-tap-highlight-color: transparent;
         }
         
-        /* MATERIAL 3 EXPRESSIVE ANIMATIONS */
-        
         /* Standard morphing button */
         .btn-morph { transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); border-radius: 99px; }
         .btn-morph:active { transform: scale(0.85); border-radius: 12px; background-color: var(--md-sys-color-primary); color: var(--md-sys-color-on-primary); }
@@ -68,11 +65,11 @@
         .card-morph { transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), border-radius 0.4s ease; user-select: none; -webkit-user-select: none; }
         .card-morph:active { transform: scale(0.92); border-radius: 16px !important; }
         
-        /* FAB Expressive: Round to Square */
+        /* FAB Expressive */
         .fab-expressive { transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1); border-radius: 50%; }
         .fab-expressive:active { transform: scale(0.85); border-radius: 12px; background-color: var(--md-sys-color-primaryContainer); color: var(--md-sys-color-on-primaryContainer); }
 
-        /* Capsule Expressive: Stretch and Push */
+        /* Capsule Settings Animation */
         .capsule-group { display: flex; gap: 4px; width: 100%; transition: all 0.4s cubic-bezier(0.2, 0, 0, 1); }
         .capsule-btn { 
             flex: 1; display: flex; justify-content: center; align-items: center;
@@ -83,21 +80,52 @@
             flex: 2; transform: scale(0.95); border-radius: 12px; 
             background-color: var(--md-sys-color-primary); color: var(--md-sys-color-on-primary); 
         }
-        .capsule-input-area { transition: flex 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); }
 
-        /* Modal Expressive Animation */
+        /* Search Bar Expressive Stretching & Pushing */
+        .search-capsule {
+            transition: flex-grow 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), background-color 0.4s, border-color 0.4s, box-shadow 0.4s;
+            flex-grow: 1; 
+        }
+        .search-capsule:focus-within {
+            flex-grow: 4; /* Melar pesat saat disentuh */
+            background-color: var(--md-sys-color-surface);
+            border-color: var(--md-sys-color-primary);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+        #settings-btn {
+            transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.5s ease;
+        }
+        /* Settings menyingkir sedikit pas Search memanjang */
+        .search-capsule:focus-within + #settings-btn {
+            transform: scale(0.85);
+            opacity: 0.6;
+        }
+
+        /* Header Scroll Morphing Animations */
+        #main-header { transition: padding 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.5s ease; }
+        .scrolled-header { padding-top: 1rem !important; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        
+        #header-top-row {
+            max-height: 100px; opacity: 1; transform: translateY(0) scale(1);
+            margin-bottom: 1.5rem; transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            transform-origin: top left;
+        }
+        .hide-top #header-top-row {
+            max-height: 0px; opacity: 0; margin-bottom: 0;
+            transform: translateY(-10px) scale(0.9); pointer-events: none;
+        }
+
+        /* Modals & Panels */
         .modal-overlay { transition: opacity 0.3s ease; }
         .modal-content { transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), border-radius 0.4s ease; transform-origin: bottom; }
-        
         .side-panel { transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.3s ease; }
 
+        /* Reader */
         .reader-text-container { column-gap: 2rem; column-rule: 1px solid var(--md-sys-color-surface-variant); }
         @media (min-width: 768px) { .reader-text-container { column-count: 2; } }
-
         .progress-smooth { transition: width 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); }
         
         mark.search-hl { background-color: var(--md-sys-color-primary); color: var(--md-sys-color-on-primary); border-radius: 4px; padding: 0 4px; transition: background-color 1.5s ease, color 1.5s ease; }
-        
         .hl-yellow { background-color: #FDE047; color: #000; }
         .hl-green { background-color: #86EFAC; color: #000; }
         .hl-pink { background-color: #F9A8D4; color: #000; }
@@ -111,7 +139,6 @@
         .hide-scroll { -ms-overflow-style: none; scrollbar-width: none; }
 
         :root { --reader-font: 'Lora', serif; --reader-size: 1.2rem; --reader-align: left; --reader-line-height: 1.8; }
-
         .reader-dynamic-text { word-wrap: break-word; overflow-wrap: anywhere; hyphens: auto; }
         .reader-dynamic-text p { font-family: var(--reader-font) !important; font-size: var(--reader-size) !important; text-align: var(--reader-align) !important; line-height: var(--reader-line-height) !important; max-width: 100%; overflow-x: hidden; }
         .reader-dynamic-text h1 { font-family: var(--reader-font) !important; font-size: calc(var(--reader-size) * 1.8) !important; text-align: left !important; line-height: 1.3 !important; font-weight: bold; margin-top: 2rem; margin-bottom: 1.5rem; color: var(--md-sys-color-primary); }
@@ -121,29 +148,32 @@
 </head>
 <body class="font-sans flex flex-col relative">
 
-    <!-- VIEW: LIBRARY -->
     <div id="library-view" class="absolute inset-0 flex flex-col overflow-hidden transition-transform duration-500 origin-bottom bg-m3-bg z-10 w-full">
-        <!-- Solid background sticky header -->
-        <header id="main-header" class="pt-10 pb-5 px-5 sticky top-0 bg-m3-bg z-40 w-full transition-shadow duration-300">
-            <div class="flex justify-between items-center mb-6">
-                <div>
-                    <h1 class="text-5xl font-bold tracking-tighter mb-1 text-m3-onBg">Baca.</h1>
-                    <p id="library-count" class="text-m3-onSurfaceVariant text-sm font-bold">0 Books</p>
+        
+        <!-- Header Dinamis dengan Animasi Morphing ke atas -->
+        <header id="main-header" class="pt-10 pb-4 px-5 sticky top-0 bg-m3-bg z-40 w-full">
+            <div class="flex flex-col w-full" id="header-wrapper">
+                
+                <!-- Baris Atas: Judul (Tampil normal, menghilang pas scroll down) -->
+                <div id="header-top-row" class="flex justify-between items-start">
+                    <div>
+                        <h1 class="text-5xl font-bold tracking-tighter mb-1 text-m3-onBg">Baca.</h1>
+                        <p id="library-count" class="text-m3-onSurfaceVariant text-sm font-bold">0 Books</p>
+                    </div>
                 </div>
-                <div class="flex gap-2">
-                    <button onclick="openModal('global-settings-modal', 'global-settings-sheet')" class="btn-morph p-4 flex items-center justify-center bg-m3-surfaceVariant text-m3-onSurfaceVariant">
+
+                <!-- Baris Bawah: Search Kapsul + Settings -->
+                <div class="flex items-center gap-3 w-full" id="header-bottom-row">
+                    <!-- Kapsul Search Expressive (Memanjang mendesak settings saat di tap) -->
+                    <div class="search-capsule bg-m3-surfaceVariant p-1.5 rounded-full flex items-center px-4 border border-transparent cursor-text" onclick="document.getElementById('global-search').focus()">
+                        <i data-lucide="search" class="w-5 h-5 opacity-70 text-m3-onSurfaceVariant shrink-0"></i>
+                        <input type="text" id="global-search" placeholder="Search books..." class="w-full bg-transparent border-none outline-none py-2.5 pl-3 font-bold text-m3-onSurfaceVariant placeholder:text-m3-onSurfaceVariant/60 text-sm">
+                    </div>
+                    
+                    <button onclick="openModal('global-settings-modal', 'global-settings-sheet')" id="settings-btn" class="btn-morph p-4 flex items-center justify-center bg-m3-surfaceVariant text-m3-onSurfaceVariant shrink-0">
                         <i data-lucide="settings"></i>
                     </button>
                 </div>
-            </div>
-            
-            <!-- Global Search as a Stretching Capsule -->
-            <div class="capsule-group bg-m3-surfaceVariant p-1 rounded-full w-full border border-transparent focus-within:border-m3-primary/50 transition-colors">
-                <div class="flex-[4] flex items-center px-4 capsule-input-area">
-                    <i data-lucide="search" class="w-5 h-5 opacity-70 text-m3-onSurfaceVariant"></i>
-                    <input type="text" id="global-search" placeholder="Search books..." class="w-full bg-transparent border-none outline-none py-3 pl-3 pr-2 font-bold text-m3-onSurfaceVariant placeholder:text-m3-onSurfaceVariant/60 text-sm">
-                </div>
-                <button class="capsule-btn flex-1 bg-m3-primary/10 text-m3-primary font-bold shadow-none border-none py-3" onclick="document.getElementById('global-search').focus()">Cari</button>
             </div>
         </header>
 
@@ -159,13 +189,17 @@
                 </div>
             </div>
 
-            <!-- Top Books / Continue Reading Section (Horizontal Slider) -->
+            <!-- Top Books / Continue Reading Section (Rasio Horizontal) -->
             <div id="continue-reading-section" class="hidden mb-8 -mx-5">
                 <h2 id="str-continue-reading" class="text-base font-bold mb-4 text-m3-onBg px-5 tracking-tight">Lanjutkan Membaca</h2>
-                <!-- Tetap rasio horizontal panjang w-64 h-40 -->
                 <div id="top-books-slider" class="flex gap-3 overflow-x-auto snap-x snap-proximity px-5 pb-2 hide-scroll" style="scroll-padding-left: 1.25rem;">
                     <!-- Top books injected here -->
                 </div>
+            </div>
+
+            <!-- Heading Tambahan untuk Grid Buku -->
+            <div id="collection-heading" class="hidden mb-4 mt-2">
+                <h2 class="text-base font-bold text-m3-onBg tracking-tight" id="str-book-collection">Koleksi Buku</h2>
             </div>
 
             <!-- Main Library Grid: 3 Kolom -->
@@ -178,7 +212,7 @@
         </div>
 
         <div class="fixed bottom-8 right-6 z-50">
-            <!-- FAB Expressive -->
+            <!-- FAB Expressive (Kotak) -->
             <button onclick="document.getElementById('doc-upload').click();" class="fab-expressive flex items-center justify-center w-16 h-16 bg-m3-primary text-m3-onPrimary cursor-pointer shadow-none">
                 <i data-lucide="plus" class="w-8 h-8"></i>
             </button>
@@ -186,7 +220,6 @@
         </div>
     </div>
 
-    <!-- VIEW: READER -->
     <div id="reader-view" class="absolute inset-0 flex flex-col bg-m3-bg text-m3-onBg transform translate-y-full transition-transform duration-500 ease-in-out z-20 w-full overflow-hidden">
         
         <!-- Loading Overlay -->
@@ -217,15 +250,17 @@
             <i data-lucide="minimize" class="w-6 h-6"></i>
         </button>
         
+        <!-- Search In-Book Expressive Capsule (Tulisan Cari Dihilangkan) -->
         <div id="reader-search-bar" class="hidden bg-m3-surfaceVariant px-4 pb-4 z-20 transition-all w-full shrink-0 rounded-b-[24px]">
-            <!-- In-Book Search as Stretching Capsule -->
-            <div class="capsule-group bg-m3-surface p-1 rounded-full w-full">
-                <div class="flex-[3] flex items-center px-4 capsule-input-area">
-                    <input type="text" id="inbook-search-input" placeholder="Search specific text..." class="w-full bg-transparent border-none outline-none py-2 font-bold text-m3-onSurface text-sm">
-                </div>
-                <button id="btn-exec-search" class="capsule-btn flex-1 bg-m3-primary text-m3-onPrimary font-bold py-2 shadow-none border-none text-sm">Search</button>
+            <div class="search-capsule flex bg-m3-surface p-1 rounded-full items-center border border-transparent cursor-text" onclick="document.getElementById('inbook-search-input').focus()">
+                <i data-lucide="search" class="w-5 h-5 ml-3 opacity-70 text-m3-onSurface shrink-0"></i>
+                <input type="text" id="inbook-search-input" placeholder="Search specific text..." class="w-full bg-transparent border-none outline-none py-2 pl-3 pr-2 font-bold text-m3-onSurface text-sm">
+                <!-- Gunakan icon arrow-right murni, hilangkan text -->
+                <button id="btn-exec-search" class="btn-morph w-8 h-8 mr-1 bg-m3-primary/10 text-m3-primary rounded-full hover:bg-m3-primary hover:text-m3-onPrimary transition-colors flex items-center justify-center shrink-0">
+                    <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </button>
             </div>
-            <div id="search-results-panel" class="hidden mt-2 max-h-40 overflow-y-auto overflow-x-hidden rounded-xl bg-m3-surface text-sm"></div>
+            <div id="search-results-panel" class="hidden mt-3 max-h-40 overflow-y-auto overflow-x-hidden rounded-xl bg-m3-surface text-sm"></div>
         </div>
 
         <div class="h-1 w-full bg-m3-surfaceVariant shrink-0">
@@ -286,7 +321,6 @@
         </div>
     </div>
 
-    <!-- Modals (No Blur, Expressive Morphing) -->
     <!-- Welcome Modal -->
     <div id="welcome-modal" onclick="if(event.target === this) closeWelcome()" class="hidden modal-overlay fixed inset-0 bg-m3-bg/95 z-[200] flex items-center justify-center p-4 opacity-0">
         <div class="modal-content bg-m3-surface w-full max-w-md rounded-[48px] overflow-hidden flex flex-col scale-75 translate-y-12 border border-m3-surfaceVariant" id="welcome-sheet">
@@ -405,7 +439,7 @@
                 <button onclick="selectShape('default')" id="shape-default" class="btn-morph p-3 bg-m3-surfaceVariant text-m3-onSurfaceVariant rounded-xl font-bold text-xs border border-transparent">Dynamic</button>
                 <button onclick="selectShape('square')" id="shape-square" class="btn-morph p-3 bg-m3-surfaceVariant text-m3-onSurfaceVariant rounded-xl font-bold text-xs border border-transparent">Square</button>
             </div>
-            <!-- Default value set to rounded -->
+            <!-- Default shape is now 'rounded' -->
             <input type="hidden" id="edit-book-shape" value="rounded">
 
             <div class="flex gap-2">
@@ -486,7 +520,6 @@
     <script>
         pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.worker.min.js';
 
-        // M3 Palettes restored to include all options
         const M3_PALETTES = {
             purple: { light: `--md-sys-color-primary:#6750A4;--md-sys-color-on-primary:#FFFFFF;--md-sys-color-primary-container:#EADDFF;--md-sys-color-on-primary-container:#21005D;--md-sys-color-secondary-container:#E8DEF8;--md-sys-color-on-secondary-container:#1D192B;--md-sys-color-tertiary-container:#FFD8E4;--md-sys-color-on-tertiary-container:#31111D;--md-sys-color-background:#FEF7FF;--md-sys-color-on-background:#1D1B20;--md-sys-color-surface:#FEF7FF;--md-sys-color-on-surface:#1D1B20;--md-sys-color-surface-variant:#E7E0EC;--md-sys-color-on-surface-variant:#49454F;`, dark: `--md-sys-color-primary:#D0BCFF;--md-sys-color-on-primary:#381E72;--md-sys-color-primary-container:#4F378B;--md-sys-color-on-primary-container:#EADDFF;--md-sys-color-secondary-container:#4A4458;--md-sys-color-on-secondary-container:#E8DEF8;--md-sys-color-tertiary-container:#633B48;--md-sys-color-on-tertiary-container:#FFD8E4;--md-sys-color-background:#141218;--md-sys-color-on-background:#E6E0E9;--md-sys-color-surface:#141218;--md-sys-color-on-surface:#E6E0E9;--md-sys-color-surface-variant:#49454F;--md-sys-color-on-surface-variant:#CAC4D0;` },
             green: { light: `--md-sys-color-primary:#006C4C;--md-sys-color-on-primary:#FFFFFF;--md-sys-color-primary-container:#89F8D6;--md-sys-color-on-primary-container:#002114;--md-sys-color-secondary-container:#CCE8DB;--md-sys-color-on-secondary-container:#052016;--md-sys-color-tertiary-container:#BEEAF6;--md-sys-color-on-tertiary-container:#001F29;--md-sys-color-background:#FBFDF8;--md-sys-color-on-background:#191C1A;--md-sys-color-surface:#FBFDF8;--md-sys-color-on-surface:#191C1A;--md-sys-color-surface-variant:#DBE5DD;--md-sys-color-on-surface-variant:#404943;`, dark: `--md-sys-color-primary:#6CDBBA;--md-sys-color-on-primary:#003825;--md-sys-color-primary-container:#005138;--md-sys-color-on-primary-container:#89F8D6;--md-sys-color-secondary-container:#334B3F;--md-sys-color-on-secondary-container:#CCE8DB;--md-sys-color-tertiary-container:#204D59;--md-sys-color-on-tertiary-container:#BEEAF6;--md-sys-color-background:#111412;--md-sys-color-on-background:#E1E3DF;--md-sys-color-surface:#111412;--md-sys-color-on-surface:#E1E3DF;--md-sys-color-surface-variant:#404943;--md-sys-color-on-surface-variant:#BFC9C3;` },
@@ -517,19 +550,33 @@
             setBtn: document.getElementById('btn-settings'), setPanel: document.getElementById('settings-panel'),
             readContent: document.getElementById('reader-content'), progBar: document.getElementById('reading-progress-bar'), progTxt: document.getElementById('reader-progress-text'),
             searchBtn: document.getElementById('btn-reader-search'), searchBar: document.getElementById('reader-search-bar'), searchInput: document.getElementById('inbook-search-input'), searchExec: document.getElementById('btn-exec-search'), searchRes: document.getElementById('search-results-panel'),
-            globalSearch: document.getElementById('global-search')
+            globalSearch: document.getElementById('global-search'),
+            colHeading: document.getElementById('collection-heading')
         };
 
         const libScroll = document.getElementById('library-content-scroll');
+        let lastScrollY = 0;
         if(libScroll && DOM.mainHeader) {
             libScroll.addEventListener('scroll', () => {
-                if (libScroll.scrollTop > 5) { DOM.mainHeader.classList.add('shadow-[0_2px_10px_rgba(0,0,0,0.05)]'); } 
-                else { DOM.mainHeader.classList.remove('shadow-[0_2px_10px_rgba(0,0,0,0.05)]'); }
+                const currentScrollY = libScroll.scrollTop;
+                
+                if (currentScrollY > 10) { DOM.mainHeader.classList.add('scrolled-header'); } 
+                else { DOM.mainHeader.classList.remove('scrolled-header'); }
+                
+                // Animasi ngumpet/morph pas turun, nongol pas naik
+                if (currentScrollY > 50 && currentScrollY > lastScrollY) {
+                    DOM.mainHeader.classList.add('hide-top');
+                } else if (currentScrollY < lastScrollY) {
+                    DOM.mainHeader.classList.remove('hide-top');
+                }
+                
+                lastScrollY = currentScrollY <= 0 ? 0 : currentScrollY;
             });
         }
 
         let library = []; let activeBookId = null; let observer = null; let activePanel = null;
         let activeOptsId = null; let currentSelection = { text: "", nodeIdx: -1 }; let activeAnnotationId = null;
+        let filteredLibData = null;
         
         window.addEventListener('popstate', (e) => {
             if (!document.getElementById('ai-modal').classList.contains('opacity-0')) { closeAiModal(true); }
@@ -551,21 +598,18 @@
         let wikiLang = localStorage.getItem('wiki_lang') || 'id';
 
         const i18n = {
-            id: {
-                libEmpty: "Perpustakaan Kosong.", searchBooks: "Cari buku...", loadingDocs: "Membaca Dokumen...", booksCount: "Buku", continueReading: "Lanjutkan Membaca"
-            },
-            en: {
-                libEmpty: "Library is Empty.", searchBooks: "Search books...", loadingDocs: "Reading Document...", booksCount: "Books", continueReading: "Continue Reading"
-            }
+            id: { libEmpty: "Perpustakaan Kosong.", searchBooks: "Cari buku...", loadingDocs: "Membaca Dokumen...", booksCount: "Buku", continueReading: "Lanjutkan Membaca", bookCollection: "Koleksi Buku" },
+            en: { libEmpty: "Library is Empty.", searchBooks: "Search books...", loadingDocs: "Reading Document...", booksCount: "Books", continueReading: "Continue Reading", bookCollection: "Book Collection" }
         };
 
         const applyLanguage = () => {
             const d = i18n[wikiLang] || i18n['id'];
             if(document.getElementById('str-lib-empty')) document.getElementById('str-lib-empty').innerText = d.libEmpty;
             if(document.getElementById('str-continue-reading')) document.getElementById('str-continue-reading').innerText = d.continueReading;
-            if(document.getElementById('global-search')) document.getElementById('global-search').placeholder = d.searchBooks;
+            if(document.getElementById('str-book-collection')) document.getElementById('str-book-collection').innerText = d.bookCollection;
+            if(DOM.globalSearch) DOM.globalSearch.placeholder = d.searchBooks;
             if(document.getElementById('loading-text')) document.getElementById('loading-text').innerText = d.loadingDocs;
-            if(document.getElementById('library-count')) document.getElementById('library-count').textContent = `${(library.length)} ${d.booksCount}`;
+            if(DOM.count) DOM.count.textContent = `${(filteredLibData ? filteredLibData.length : library.length)} ${d.booksCount}`;
         };
 
         function renderNodeText(text, annots) {
@@ -647,7 +691,6 @@
                 if (amoContainer) amoContainer.classList.add('hidden');
             }
 
-            // Sync Capsule groups
             const tl = document.getElementById('theme-btn-light');
             const td = document.getElementById('theme-btn-dark');
             const ta = document.getElementById('theme-btn-amoled');
@@ -764,7 +807,7 @@
             const card = document.createElement('div');
             
             let shapeClass = "";
-            let shp = book.shape || 'rounded'; // default ke rounded sesuai request
+            let shp = book.shape || 'rounded';
             if (shp === 'rounded') shapeClass = 'rounded-[24px]';
             else if (shp === 'square') shapeClass = 'rounded-lg';
             else shapeClass = index % 2 === 0 ? 'rounded-tl-[32px] rounded-br-[32px] rounded-tr-lg rounded-bl-lg' : 'rounded-tr-[32px] rounded-bl-[32px] rounded-tl-lg rounded-br-lg';
@@ -772,17 +815,16 @@
             let bgStyle = ""; let textOverlay = ""; let baseClass = "";
             
             if(book.coverBase64) {
-                // Background image: Fix border artifact by forcing transparent bg color and removing any borders.
-                bgStyle = `background-image: url('${book.coverBase64}'); background-size: cover; background-position: top center; background-color: transparent !important; box-shadow: none; border: none;`;
-                baseClass = "text-white border-0"; 
-                // Fix gradasi bottom line bleed: stretch gradient by -4px at bottom (-inset-1) and opaque black at the very bottom
-                textOverlay = `<div class="absolute inset-x-0 -bottom-1 h-3/4 bg-gradient-to-t from-[#000000] via-black/60 to-transparent pointer-events-none z-0"></div>`;
+                // Menghilangkan semua border/garis luar dan pastikan membaur murni
+                bgStyle = `background-image: url('${book.coverBase64}'); background-size: cover; background-position: top center;`;
+                baseClass = "text-white"; 
+                // Gradien murni hitam ke transparan supaya tidak kaku
+                textOverlay = `<div class="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent pointer-events-none z-0 rounded-inherit"></div>`;
             } else {
                 const colors = ['bg-m3-primaryContainer text-m3-onPrimaryContainer', 'bg-m3-secondaryContainer text-m3-onSecondaryContainer', 'bg-m3-surfaceVariant text-m3-onSurfaceVariant'];
                 baseClass = colors[index % 3];
             }
 
-            // Tetap rasio agak horizontal sesuai format awal untuk slider
             const dimensionClass = isSlider ? "w-64 h-40 shrink-0 snap-start" : "aspect-[3/4.5] w-full";
 
             let pressTimer = null; let isPressing = false; let hasLongPressed = false;
@@ -798,8 +840,7 @@
             card.addEventListener('mouseleave', handleMove); card.addEventListener('touchmove', handleMove, {passive: true});
             card.addEventListener('click', (e) => { if (hasLongPressed) { e.preventDefault(); e.stopPropagation(); return; } openBook(book); });
 
-            // Make sure overflow is strictly hidden to enforce the rounded edges properly
-            card.className = `${baseClass} ${shapeClass} ${dimensionClass} p-3 relative cursor-pointer card-morph flex flex-col justify-between overflow-hidden`;
+            card.className = `${baseClass} ${shapeClass} ${dimensionClass} p-3 relative cursor-pointer card-morph flex flex-col justify-between overflow-hidden outline-none border-none`;
             card.style = bgStyle;
 
             if (isSlider) {
@@ -847,9 +888,9 @@
         function renderLibrary(filterText = "") {
             DOM.grid.innerHTML = ''; DOM.topSlider.innerHTML = '';
             
-            let filteredLib = library;
-            if(filterText) filteredLib = library.filter(b => b.title.toLowerCase().includes(filterText.toLowerCase()));
-            DOM.count.textContent = `${filteredLib.length} ${i18n[wikiLang].booksCount}`;
+            filteredLibData = library;
+            if(filterText) filteredLibData = library.filter(b => b.title.toLowerCase().includes(filterText.toLowerCase()));
+            DOM.count.textContent = `${filteredLibData.length} ${i18n[wikiLang].booksCount}`;
             
             let topBooks = [];
             if (!filterText) { topBooks = library.filter(b => b.progressPct > 0).sort((a,b) => b.progressPct - a.progressPct); }
@@ -860,10 +901,13 @@
                 const spacer = document.createElement('div'); spacer.className = "w-2 shrink-0 snap-align-none"; DOM.topSlider.appendChild(spacer);
             } else { DOM.topSection.classList.add('hidden'); }
             
-            if (filteredLib.length === 0) { DOM.empty.classList.remove('hidden'); DOM.grid.classList.add('hidden'); } 
-            else {
+            if (filteredLibData.length === 0) { 
+                DOM.empty.classList.remove('hidden'); DOM.grid.classList.add('hidden'); 
+                if(DOM.colHeading) DOM.colHeading.classList.add('hidden');
+            } else {
                 DOM.empty.classList.add('hidden'); DOM.grid.classList.remove('hidden');
-                filteredLib.forEach((book, index) => { DOM.grid.appendChild(createBookCard(book, false, index)); });
+                if(DOM.colHeading) DOM.colHeading.classList.remove('hidden');
+                filteredLibData.forEach((book, index) => { DOM.grid.appendChild(createBookCard(book, false, index)); });
                 lucide.createIcons();
             }
         }
@@ -892,7 +936,7 @@
             document.getElementById('edit-book-title').value = book.title; 
             document.getElementById('edit-book-cover').value = '';
             
-            window.selectShape(book.shape || 'rounded'); // fallback to rounded if none
+            window.selectShape(book.shape || 'rounded'); 
             history.back(); setTimeout(() => { openModal('edit-modal', 'edit-sheet', true); }, 400); 
         }
         
@@ -1016,7 +1060,9 @@
             if (activePanel) { history.back(); }
             DOM.searchBar.classList.toggle('hidden'); if(!DOM.searchBar.classList.contains('hidden')) DOM.searchInput.focus(); 
         };
-        DOM.searchExec.onclick = executeSearch; DOM.searchInput.addEventListener('keypress', (e) => { if(e.key === 'Enter') executeSearch(); });
+        
+        DOM.searchExec.onclick = executeSearch; 
+        DOM.searchInput.addEventListener('keypress', (e) => { if(e.key === 'Enter') executeSearch(); });
 
         function executeSearch() {
             const query = DOM.searchInput.value.toLowerCase().trim(); DOM.searchRes.innerHTML = '';
