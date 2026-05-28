@@ -58,21 +58,15 @@
             transition: background-color 0.4s ease, color 0.4s ease; -webkit-tap-highlight-color: transparent;
         }
         
-        /* MATERIAL 3 EXPRESSIVE ANIMATIONS */
-        
-        /* Standard morphing button */
         .btn-morph { transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); border-radius: 99px; }
         .btn-morph:active { transform: scale(0.85); border-radius: 12px; background-color: var(--md-sys-color-primary) !important; color: var(--md-sys-color-on-primary) !important; }
         
-        /* Card scaling */
-        .card-morph { transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), border-radius 0.4s ease; user-select: none; -webkit-user-select: none; }
+        .card-morph { transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), border-radius 0.4s ease, box-shadow 0.3s; user-select: none; -webkit-user-select: none; }
         .card-morph:active { transform: scale(0.92); border-radius: 16px !important; }
         
-        /* FAB Capsule Expressive: Bulat memanjang saat ditekan, warna solid */
         .fab-capsule { transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); border-radius: 32px; width: 64px; height: 64px; }
         .fab-capsule:active { transform: scale(0.95); width: 104px; border-radius: 20px; background-color: var(--md-sys-color-primary) !important; color: var(--md-sys-color-on-primary) !important; opacity: 1 !important; }
 
-        /* Capsule Expressive: Stretch and Push */
         .capsule-group { display: flex; gap: 4px; width: 100%; transition: all 0.4s cubic-bezier(0.2, 0, 0, 1); }
         .capsule-btn { 
             flex: 1; display: flex; justify-content: center; align-items: center;
@@ -84,7 +78,6 @@
             background-color: var(--md-sys-color-primary) !important; color: var(--md-sys-color-on-primary) !important; opacity: 1 !important;
         }
 
-        /* Search & Settings Expressive Row */
         .search-row {
             display: flex; align-items: center; gap: 0.75rem; width: 100%;
             transition: gap 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
@@ -97,7 +90,6 @@
             width: 56px; height: 56px; overflow: hidden; flex-shrink: 0;
             transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
-        /* Saat Setting ditahan, merenggang mendesak search bar - WARNA TETAP SOLID */
         .btn-settings:active {
             width: 72px; 
             border-radius: 16px;
@@ -105,14 +97,12 @@
             color: var(--md-sys-color-on-surface-variant) !important;
             opacity: 1 !important;
         }
-        /* State Saat Search Aktif (Melar mencaplok settings) */
         .search-active { gap: 0px !important; }
         .search-active .btn-settings {
             width: 0px !important; padding: 0 !important; margin: 0 !important;
             opacity: 0 !important; transform: scale(0.5); border: none;
         }
 
-        /* Modal Expressive Animation */
         .modal-overlay { transition: opacity 0.3s ease; }
         .modal-content { transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), border-radius 0.4s ease; transform-origin: bottom; }
         
@@ -148,10 +138,8 @@
 </head>
 <body class="font-sans flex flex-col relative">
 
-    <!-- VIEW: LIBRARY -->
     <div id="library-view" class="absolute inset-0 flex flex-col overflow-hidden transition-transform duration-500 origin-bottom bg-m3-bg z-10 w-full">
         
-        <!-- FIXED STATIC HEADER -->
         <header id="main-header" class="flex-none sticky top-0 z-40 bg-m3-bg pt-10 pb-5 px-5 transition-shadow duration-300">
             <div id="title-area" class="mb-4">
                 <h1 class="text-4xl font-bold tracking-tighter mb-1 text-m3-onBg">Baca.</h1>
@@ -160,8 +148,8 @@
             
             <div id="search-area" class="search-row transition-shadow duration-300">
                 <div class="search-capsule bg-m3-surfaceVariant p-1.5 rounded-full px-4 relative">
-                    <i data-lucide="search" id="search-icon-lib" class="w-5 h-5 opacity-70 text-m3-onSurfaceVariant shrink-0 absolute left-4 transition-transform duration-300 pointer-events-none"></i>
-                    <input type="text" id="global-search" placeholder="..." class="w-full bg-transparent border-none outline-none py-2.5 pl-8 pr-2 font-bold text-m3-onSurfaceVariant placeholder:text-m3-onSurfaceVariant/60 text-sm">
+                    <i data-lucide="search" id="search-icon-lib" class="w-5 h-5 opacity-80 text-m3-primary shrink-0 absolute left-4 transition-transform duration-300 pointer-events-none"></i>
+                    <input type="text" id="global-search" placeholder="..." class="w-full bg-transparent border-none outline-none py-2.5 pl-8 pr-2 font-bold text-m3-primary placeholder:text-m3-primary/60 text-sm">
                 </div>
                 <button onclick="openModal('global-settings-modal', 'global-settings-sheet')" id="settings-btn" class="btn-morph btn-settings flex items-center justify-center bg-m3-surfaceVariant text-m3-onSurfaceVariant">
                     <i data-lucide="settings"></i>
@@ -169,7 +157,6 @@
             </div>
         </header>
 
-        <!-- Main Content Area -->
         <div id="library-content-scroll" class="flex-1 overflow-y-auto w-full px-5 pb-32">
             
             <div id="loading-state" class="hidden mb-8 p-5 bg-m3-secondaryContainer text-m3-onSecondaryContainer rounded-[28px]">
@@ -184,14 +171,14 @@
 
             <div id="continue-reading-section" class="hidden mb-8 -mx-5 mt-2">
                 <h2 id="str-continue-reading" class="text-base font-bold mb-4 text-m3-onBg px-5 tracking-tight">Lanjutkan Membaca</h2>
-                <div id="top-books-slider" class="flex gap-3 overflow-x-auto snap-x snap-proximity px-5 pb-2 hide-scroll" style="scroll-padding-left: 1.25rem;">
-                    <!-- Top books -->
-                </div>
+                <div id="top-books-slider" class="flex gap-3 overflow-x-auto snap-x snap-proximity px-5 pb-2 hide-scroll" style="scroll-padding-left: 1.25rem;"></div>
             </div>
 
-            <!-- Label Koleksi Buku -->
-            <div id="collection-heading" class="hidden mb-4 mt-2">
+            <div id="collection-heading" class="hidden mb-4 mt-2 flex justify-between items-center">
                 <h2 class="text-base font-bold text-m3-onBg tracking-tight" id="str-book-collection">Koleksi Buku</h2>
+                <button onclick="toggleBatchDelete()" id="btn-batch-mode" class="w-10 h-10 flex items-center justify-center rounded-full bg-m3-surfaceVariant text-m3-onSurfaceVariant btn-morph">
+                    <i data-lucide="trash-2" class="w-5 h-5"></i>
+                </button>
             </div>
 
             <div id="book-grid" class="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 w-full"></div>
@@ -202,12 +189,19 @@
             </div>
         </div>
 
-        <div class="fixed bottom-8 right-6 z-50">
-            <!-- FAB Dengan animasi melar/ekspresif -->
+        <div class="fixed bottom-8 right-6 z-50 transition-opacity duration-300" id="main-fab-container">
             <button onclick="document.getElementById('doc-upload').click();" class="fab-capsule flex items-center justify-center bg-m3-primary text-m3-onPrimary cursor-pointer shadow-none overflow-hidden">
                 <i data-lucide="plus" class="w-8 h-8 shrink-0"></i>
             </button>
             <input type="file" id="doc-upload" accept=".epub,.pdf" class="hidden">
+        </div>
+        
+        <div id="batch-delete-bar" class="fixed bottom-0 inset-x-0 bg-m3-secondaryContainer text-m3-onSecondaryContainer p-5 pb-8 z-50 transform translate-y-full transition-transform duration-400 rounded-t-[32px] flex justify-between items-center shadow-lg">
+            <span id="batch-delete-count" class="font-bold text-base ml-2">0 selected</span>
+            <div class="flex gap-3">
+                <button onclick="toggleBatchDelete()" class="px-5 py-3 font-bold bg-transparent rounded-full btn-morph text-m3-onSecondaryContainer" id="str-batch-cancel">Batal</button>
+                <button onclick="executeBatchDelete()" class="px-6 py-3 font-bold bg-red-600 text-white rounded-full btn-morph" id="str-batch-delete">Hapus</button>
+            </div>
         </div>
     </div>
 
@@ -243,9 +237,9 @@
         
         <div id="reader-search-bar" class="hidden bg-m3-surfaceVariant px-4 pb-4 z-20 transition-all w-full shrink-0 rounded-b-[24px]">
             <div class="search-row" id="inbook-search-row">
-                <div class="search-capsule bg-m3-surface p-1 rounded-full relative">
-                    <i data-lucide="corner-down-right" id="search-icon-inbook" class="w-5 h-5 opacity-70 text-m3-onSurface shrink-0 absolute left-4 pointer-events-none"></i>
-                    <input type="text" id="inbook-search-input" placeholder="..." class="w-full bg-transparent border-none outline-none py-2 pl-10 pr-2 font-bold text-m3-onSurface text-sm">
+                <div class="search-capsule bg-m3-surface p-1.5 rounded-full relative">
+                    <i data-lucide="corner-down-right" id="search-icon-inbook" class="w-5 h-5 opacity-80 text-m3-primary shrink-0 absolute left-4 pointer-events-none"></i>
+                    <input type="text" id="inbook-search-input" placeholder="..." class="w-full bg-transparent border-none outline-none py-2 pl-10 pr-2 font-bold text-m3-primary placeholder:text-m3-primary/60 text-sm">
                 </div>
                 <button id="btn-exec-search-book" onclick="executeSearch()" class="btn-morph btn-settings bg-m3-primary text-m3-onPrimary rounded-full flex items-center justify-center shrink-0" style="background-color: var(--md-sys-color-primary) !important; color: var(--md-sys-color-on-primary) !important;">
                     <i data-lucide="arrow-right" class="w-5 h-5"></i>
@@ -413,26 +407,26 @@
 
     <!-- Edit Book Data Modal -->
     <div id="edit-modal" onclick="if(event.target === this) history.back()" class="hidden modal-overlay fixed inset-0 bg-m3-bg/90 z-[120] flex items-center justify-center opacity-0 p-4">
-        <div class="modal-content bg-m3-surface w-full max-w-sm rounded-[48px] p-8 transform scale-75 translate-y-12 border border-m3-surfaceVariant" id="edit-sheet">
-            <h3 class="text-xl font-bold mb-6 text-m3-onSurface">Edit Details</h3>
+        <div class="modal-content bg-m3-secondaryContainer text-m3-onSecondaryContainer w-full max-w-sm rounded-[48px] p-8 transform scale-75 translate-y-12 border-none shadow-2xl" id="edit-sheet">
+            <h3 class="text-xl font-bold mb-6">Edit Details</h3>
             <input type="hidden" id="edit-book-id">
             
             <label class="text-xs font-bold opacity-70 block mb-2 uppercase tracking-wider">Book Title</label>
-            <input type="text" id="edit-book-title" class="w-full bg-m3-surfaceVariant text-m3-onSurfaceVariant p-4 rounded-2xl mb-5 font-bold outline-none border border-transparent focus:border-m3-primary">
+            <input type="text" id="edit-book-title" class="w-full bg-m3-surface text-m3-onSurface p-4 rounded-2xl mb-5 font-bold outline-none border border-transparent focus:border-m3-primary">
             
             <label class="text-xs font-bold opacity-70 block mb-2 uppercase tracking-wider">Cover Image</label>
-            <input type="file" id="edit-book-cover" accept="image/*" class="w-full text-xs mb-5 font-bold file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-xs file:font-bold file:bg-m3-primaryContainer file:text-m3-onPrimaryContainer hover:file:bg-m3-primaryContainer/80">
+            <input type="file" id="edit-book-cover" accept="image/*" class="w-full text-xs mb-5 font-bold file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-xs file:font-bold file:bg-m3-primary file:text-m3-onPrimary hover:file:opacity-90">
             
             <label class="text-xs font-bold opacity-70 block mb-2 uppercase tracking-wider">Card Shape</label>
             <div class="grid grid-cols-2 gap-2 mb-8">
-                <button onclick="selectShape('default')" id="shape-default" class="btn-morph p-3 bg-m3-surfaceVariant text-m3-onSurfaceVariant rounded-xl font-bold text-xs border border-transparent">Dynamic</button>
-                <button onclick="selectShape('rounded')" id="shape-rounded" class="btn-morph p-3 bg-m3-surfaceVariant text-m3-onSurfaceVariant rounded-xl font-bold text-xs border border-transparent">Rounded</button>
-                <button onclick="selectShape('square')" id="shape-square" class="btn-morph p-3 bg-m3-surfaceVariant text-m3-onSurfaceVariant rounded-xl font-bold text-xs border border-transparent">Square</button>
+                <button onclick="selectShape('default')" id="shape-default" class="btn-morph p-3 bg-m3-surface text-m3-onSurface rounded-xl font-bold text-xs border border-transparent">Dynamic</button>
+                <button onclick="selectShape('rounded')" id="shape-rounded" class="btn-morph p-3 bg-m3-surface text-m3-onSurface rounded-xl font-bold text-xs border border-transparent">Rounded</button>
+                <button onclick="selectShape('square')" id="shape-square" class="btn-morph p-3 bg-m3-surface text-m3-onSurface rounded-xl font-bold text-xs border border-transparent">Square</button>
             </div>
-            <input type="hidden" id="edit-book-shape" value="rounded">
+            <input type="hidden" id="edit-book-shape" value="square">
 
             <div class="flex gap-2">
-                <button onclick="closeEditModal()" class="flex-1 py-3 bg-transparent text-m3-onSurface font-bold rounded-full btn-morph">Cancel</button>
+                <button onclick="closeEditModal()" class="flex-1 py-3 bg-transparent text-m3-onSecondaryContainer font-bold rounded-full btn-morph">Cancel</button>
                 <button onclick="saveBookEdit()" class="flex-1 py-3 bg-m3-primary text-m3-onPrimary font-bold rounded-full btn-morph">Save</button>
             </div>
         </div>
@@ -551,24 +545,17 @@
             });
         }
 
-        // --- LOGIKA GLOBAL MENGUNCUPKAN SEARCH BAR (KLIK DI LUAR) ---
         document.addEventListener('click', (e) => {
             const searchArea = document.getElementById('search-area');
             if (searchArea && searchArea.classList.contains('search-active')) {
-                if (!searchArea.contains(e.target)) {
-                    closeSearch(false);
-                }
+                if (!searchArea.contains(e.target)) closeSearch(false);
             }
-            
             const inbookSearchRow = document.getElementById('inbook-search-row');
             if (inbookSearchRow && inbookSearchRow.classList.contains('search-active')) {
-                if (!inbookSearchRow.contains(e.target)) {
-                    closeInbookSearch(false);
-                }
+                if (!inbookSearchRow.contains(e.target)) closeInbookSearch(false);
             }
         });
 
-        // Logic Search Main Menu
         const searchArea = document.getElementById('search-area');
         const searchCapsule = document.querySelector('.search-capsule');
         
@@ -581,28 +568,19 @@
 
         searchCapsule.addEventListener('click', (e) => {
             if (searchArea.classList.contains('search-active')) {
-                // Tutup search jika yang diklik adalah background kapsul/ikon (bukan input ketik)
-                if (e.target !== DOM.globalSearch) {
-                    closeSearch(false);
-                }
-            } else {
-                DOM.globalSearch.focus();
-            }
+                if (e.target !== DOM.globalSearch) closeSearch(false);
+            } else { DOM.globalSearch.focus(); }
         });
 
         window.closeSearch = function(fromHistory = false) {
             if (searchArea.classList.contains('search-active')) {
                 searchArea.classList.remove('search-active');
-                DOM.globalSearch.blur();
-                DOM.globalSearch.value = '';
+                DOM.globalSearch.blur(); DOM.globalSearch.value = '';
                 renderLibrary();
-                if (!fromHistory && window.location.hash === '#search') {
-                    history.back();
-                }
+                if (!fromHistory && window.location.hash === '#search') history.back();
             }
         };
 
-        // Logic Search In-Book (Dalam Buku)
         const inbookSearchRow = document.getElementById('inbook-search-row');
         const inbookSearchInput = document.getElementById('inbook-search-input');
         const inbookSearchCapsule = document.querySelector('#inbook-search-row .search-capsule');
@@ -617,12 +595,8 @@
         if (inbookSearchCapsule) {
             inbookSearchCapsule.addEventListener('click', (e) => {
                 if (inbookSearchRow.classList.contains('search-active')) {
-                    if (e.target !== inbookSearchInput) {
-                        closeInbookSearch(false);
-                    }
-                } else {
-                    inbookSearchInput.focus();
-                }
+                    if (e.target !== inbookSearchInput) closeInbookSearch(false);
+                } else { inbookSearchInput.focus(); }
             });
         }
 
@@ -630,14 +604,15 @@
             if (inbookSearchRow.classList.contains('search-active')) {
                 inbookSearchRow.classList.remove('search-active');
                 inbookSearchInput.blur();
-                if (!fromHistory && window.location.hash === '#inbook-search') {
-                    history.back();
-                }
+                if (!fromHistory && window.location.hash === '#inbook-search') history.back();
             }
         };
 
         let library = []; let activeBookId = null; let observer = null; let activePanel = null;
         let activeOptsId = null; let currentSelection = { text: "", nodeIdx: -1 }; let activeAnnotationId = null;
+        
+        let isBatchMode = false;
+        let selectedBatch = new Set();
         
         window.addEventListener('popstate', (e) => {
             if (!document.getElementById('ai-modal').classList.contains('opacity-0')) { closeAiModal(true); }
@@ -650,6 +625,7 @@
             else if (activePanel) { _closeSidePanelsAction(true); } 
             else if (document.getElementById('search-area').classList.contains('search-active')) { closeSearch(true); }
             else if (document.getElementById('inbook-search-row') && document.getElementById('inbook-search-row').classList.contains('search-active')) { closeInbookSearch(true); }
+            else if (isBatchMode) { toggleBatchDelete(true); }
             else if (!DOM.readView.classList.contains('translate-y-full')) { _closeReaderAction(true); }
         });
 
@@ -662,10 +638,10 @@
 
         const i18n = {
             id: {
-                libEmpty: "Perpustakaan Kosong.", searchBooks: "Cari buku...", loadingDocs: "Membaca Dokumen...", booksCount: "Buku", continueReading: "Lanjutkan Membaca"
+                libEmpty: "Perpustakaan Kosong.", searchBooks: "Cari buku...", loadingDocs: "Membaca Dokumen...", booksCount: "Buku", continueReading: "Lanjutkan Membaca", bookCollection: "Koleksi Buku", batchSelected: "dipilih", batchCancel: "Batal", batchDelete: "Hapus"
             },
             en: {
-                libEmpty: "Library is Empty.", searchBooks: "Search books...", loadingDocs: "Reading Document...", booksCount: "Books", continueReading: "Continue Reading"
+                libEmpty: "Library is Empty.", searchBooks: "Search books...", loadingDocs: "Reading Document...", booksCount: "Books", continueReading: "Continue Reading", bookCollection: "Book Collection", batchSelected: "selected", batchCancel: "Cancel", batchDelete: "Delete"
             }
         };
 
@@ -673,9 +649,13 @@
             const d = i18n[wikiLang] || i18n['id'];
             if(document.getElementById('str-lib-empty')) document.getElementById('str-lib-empty').innerText = d.libEmpty;
             if(document.getElementById('str-continue-reading')) document.getElementById('str-continue-reading').innerText = d.continueReading;
+            if(document.getElementById('str-book-collection')) document.getElementById('str-book-collection').innerText = d.bookCollection;
             if(document.getElementById('global-search')) document.getElementById('global-search').placeholder = d.searchBooks;
             if(document.getElementById('loading-text')) document.getElementById('loading-text').innerText = d.loadingDocs;
             if(document.getElementById('library-count')) document.getElementById('library-count').textContent = `${(library.length)} ${d.booksCount}`;
+            if(document.getElementById('batch-delete-count')) document.getElementById('batch-delete-count').textContent = `${selectedBatch.size} ${d.batchSelected}`;
+            if(document.getElementById('str-batch-cancel')) document.getElementById('str-batch-cancel').innerText = d.batchCancel;
+            if(document.getElementById('str-batch-delete')) document.getElementById('str-batch-delete').innerText = d.batchDelete;
         };
 
         function renderNodeText(text, annots) {
@@ -757,7 +737,6 @@
                 if (amoContainer) amoContainer.classList.add('hidden');
             }
 
-            // Sync Capsule groups
             const tl = document.getElementById('theme-btn-light');
             const td = document.getElementById('theme-btn-dark');
             const ta = document.getElementById('theme-btn-amoled');
@@ -869,15 +848,43 @@
 
         async function loadLibrary() { try { library = await localforage.getItem('pdf_epub_master') || []; renderLibrary(); } catch (e) { console.error(e); } }
         
+        window.toggleBatchDelete = function(isFromHistory = false) {
+            if(!isBatchMode && !isFromHistory) { pushAppHistory('batch-delete'); }
+            if(isBatchMode && !isFromHistory && window.location.hash === '#batch-delete') { history.back(); return; }
+            
+            isBatchMode = !isBatchMode;
+            selectedBatch.clear();
+            const bar = document.getElementById('batch-delete-bar');
+            const fab = document.getElementById('main-fab-container');
+            if (isBatchMode) {
+                bar.classList.remove('translate-y-full');
+                fab.classList.add('opacity-0', 'pointer-events-none');
+            } else {
+                bar.classList.add('translate-y-full');
+                fab.classList.remove('opacity-0', 'pointer-events-none');
+            }
+            document.getElementById('batch-delete-count').textContent = `0 ${i18n[wikiLang].batchSelected}`;
+            renderLibrary(DOM.globalSearch.value);
+        }
+
+        window.executeBatchDelete = async function() {
+            if (selectedBatch.size === 0) return history.back();
+            if (confirm(`Hapus ${selectedBatch.size} buku?`)) {
+                library = library.filter(b => !selectedBatch.has(b.id));
+                await localforage.setItem('pdf_epub_master', library);
+                history.back();
+            }
+        }
+
         function createBookCard(book, isSlider = false, index = 0) {
             const progress = book.progressPct || 0; 
             const card = document.createElement('div');
             
             let shapeClass = "";
-            let shp = book.shape || 'rounded';
+            let shp = book.shape || 'square';
             if (shp === 'rounded') shapeClass = 'rounded-[24px]';
-            else if (shp === 'square') shapeClass = 'rounded-lg';
-            else shapeClass = index % 2 === 0 ? 'rounded-tl-[32px] rounded-br-[32px] rounded-tr-lg rounded-bl-lg' : 'rounded-tr-[32px] rounded-bl-[32px] rounded-tl-lg rounded-br-lg';
+            else if (shp === 'default') shapeClass = index % 2 === 0 ? 'rounded-tl-[32px] rounded-br-[32px] rounded-tr-lg rounded-bl-lg' : 'rounded-tr-[32px] rounded-bl-[32px] rounded-tl-lg rounded-br-lg';
+            else shapeClass = 'rounded-lg';
 
             let bgStyle = ""; let textOverlay = ""; let baseClass = "";
             if(book.coverBase64) {
@@ -893,8 +900,8 @@
 
             let pressTimer = null; let isPressing = false; let hasLongPressed = false;
             const handleStart = (e) => {
+                if(isBatchMode) return;
                 isPressing = true; hasLongPressed = false;
-                // Sensitivitas diturunkan jadi 850ms biar gak gampang kepencet edit sampul
                 pressTimer = setTimeout(() => { if (isPressing) { hasLongPressed = true; window.openBookOptions(book.id); } }, 850);
             };
             const handleEnd = () => { isPressing = false; clearTimeout(pressTimer); };
@@ -903,9 +910,25 @@
             card.addEventListener('mousedown', handleStart); card.addEventListener('touchstart', handleStart, {passive: true});
             card.addEventListener('mouseup', handleEnd); card.addEventListener('touchend', handleEnd);
             card.addEventListener('mouseleave', handleMove); card.addEventListener('touchmove', handleMove, {passive: true});
-            card.addEventListener('click', (e) => { if (hasLongPressed) { e.preventDefault(); e.stopPropagation(); return; } openBook(book); });
+            card.addEventListener('click', (e) => { 
+                if (isBatchMode) {
+                    e.preventDefault(); e.stopPropagation();
+                    if (selectedBatch.has(book.id)) {
+                        selectedBatch.delete(book.id);
+                        card.classList.remove('ring-4', 'ring-red-500', 'opacity-60', 'scale-95');
+                    } else {
+                        selectedBatch.add(book.id);
+                        card.classList.add('ring-4', 'ring-red-500', 'opacity-60', 'scale-95');
+                    }
+                    document.getElementById('batch-delete-count').textContent = `${selectedBatch.size} ${i18n[wikiLang].batchSelected}`;
+                    return;
+                }
+                if (hasLongPressed) { e.preventDefault(); e.stopPropagation(); return; } 
+                openBook(book); 
+            });
 
             card.className = `${baseClass} ${shapeClass} ${dimensionClass} p-3 relative cursor-pointer card-morph flex flex-col justify-between overflow-hidden border-none outline-none ring-0`;
+            if (isBatchMode && selectedBatch.has(book.id)) card.classList.add('ring-4', 'ring-red-500', 'opacity-60', 'scale-95');
             card.style = bgStyle;
 
             if (isSlider) {
@@ -958,7 +981,7 @@
             DOM.count.textContent = `${filteredLib.length} ${i18n[wikiLang].booksCount}`;
             
             let topBooks = [];
-            if (!filterText) { topBooks = library.filter(b => b.progressPct > 0).sort((a,b) => b.progressPct - a.progressPct); }
+            if (!filterText) { topBooks = library.filter(b => b.progressPct > 0).sort((a,b) => b.progressPct - a.progressPct).slice(0, 4); }
 
             if (topBooks.length > 0) {
                 DOM.topSection.classList.remove('hidden');
@@ -1001,7 +1024,7 @@
             document.getElementById('edit-book-title').value = book.title; 
             document.getElementById('edit-book-cover').value = '';
             
-            window.selectShape(book.shape || 'rounded');
+            window.selectShape(book.shape || 'square');
             history.back(); setTimeout(() => { openModal('edit-modal', 'edit-sheet', true); }, 400); 
         }
         
@@ -1010,14 +1033,14 @@
             const btns = document.querySelectorAll('#edit-sheet .btn-morph');
             btns.forEach(b => {
                 if(b.id && b.id.startsWith('shape-')) {
-                    b.classList.remove('bg-m3-primaryContainer', 'text-m3-onPrimaryContainer');
-                    b.classList.add('bg-m3-surfaceVariant', 'text-m3-onSurfaceVariant');
+                    b.classList.remove('bg-m3-primary', 'text-m3-onPrimary');
+                    b.classList.add('bg-m3-surface', 'text-m3-onSurface');
                 }
             });
             const sel = document.getElementById('shape-' + shape);
             if(sel) {
-                sel.classList.remove('bg-m3-surfaceVariant', 'text-m3-onSurfaceVariant');
-                sel.classList.add('bg-m3-primaryContainer', 'text-m3-onPrimaryContainer');
+                sel.classList.remove('bg-m3-surface', 'text-m3-onSurface');
+                sel.classList.add('bg-m3-primary', 'text-m3-onPrimary');
             }
         }
 
@@ -1125,8 +1148,9 @@
             if (activePanel) { history.back(); }
             DOM.searchBar.classList.toggle('hidden'); if(!DOM.searchBar.classList.contains('hidden')) DOM.searchInput.focus(); 
         };
-        
-        window.executeSearch = function() {
+        DOM.searchExec.onclick = executeSearch; DOM.searchInput.addEventListener('keypress', (e) => { if(e.key === 'Enter') executeSearch(); });
+
+        function executeSearch() {
             const query = DOM.searchInput.value.toLowerCase().trim(); DOM.searchRes.innerHTML = '';
             if(!query) { DOM.searchRes.classList.add('hidden'); return; }
             document.querySelectorAll('mark.search-hl').forEach(m => m.outerHTML = m.innerHTML);
@@ -1177,7 +1201,6 @@
             }
             DOM.searchRes.classList.remove('hidden');
         }
-        DOM.searchInput.addEventListener('keypress', (e) => { if(e.key === 'Enter') executeSearch(); });
 
         function setupIntersectionObserver() {
             if (observer) observer.disconnect(); const totalNodes = DOM.inner.children.length;
@@ -1210,7 +1233,6 @@
             }
         }
 
-        // Annotations
         document.addEventListener('selectionchange', () => {
             if(!activeBookId) return;
             const sel = window.getSelection(); const text = sel.toString().trim(); const menu = document.getElementById('selection-menu');
@@ -1316,7 +1338,6 @@
             }
         };
 
-        // Wikipedia Fetch / Ask AI lookup
         window.lookupDictionary = async function() {
             if(currentSelection.nodeIdx === -1) return; const term = currentSelection.text; hideSelectionMenu();
             
@@ -1489,7 +1510,7 @@
                 }
                 cleanedNodes.push(curr);
             });
-            library.push({ id: Date.now().toString(), type: 'pdf', title: bookTitle, nodes: cleanedNodes, pages: numPages, progressPct: 0, lastReadId: null, coverBase64: coverBase64, shape: 'default' });
+            library.push({ id: Date.now().toString(), type: 'pdf', title: bookTitle, nodes: cleanedNodes, pages: numPages, progressPct: 0, lastReadId: null, coverBase64: coverBase64, shape: 'square' });
             await localforage.setItem('pdf_epub_master', library); renderLibrary();
         }
 
@@ -1535,7 +1556,7 @@
                     }
                 }
             }
-            library.push({ id: Date.now().toString(), type: 'epub', title: bookTitle, nodes: parsedNodes, pages: spine.length, progressPct: 0, lastReadId: null, coverBase64: coverBase64, shape: 'default' });
+            library.push({ id: Date.now().toString(), type: 'epub', title: bookTitle, nodes: parsedNodes, pages: spine.length, progressPct: 0, lastReadId: null, coverBase64: coverBase64, shape: 'square' });
             await localforage.setItem('pdf_epub_master', library); renderLibrary();
         }
 
