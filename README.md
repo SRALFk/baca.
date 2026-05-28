@@ -1,4 +1,4 @@
-# Baca. — Zero-Friction Local Offline E-Book Reader
+# Baca. — Zero-Friction Local E-Book Reader
 
 A brilliant, self-contained **single-file Progressive Web App (PWA)** engineered for deep reading, distraction-free literacy, and immediate contextual research. 
 
