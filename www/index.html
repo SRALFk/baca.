@@ -1679,7 +1679,7 @@
         });
     </script>
     <script>
-        // Nyambungin native Android (Back button & sinkronisasi warna Status Bar)
+        // Nyambungin native Android & Fullscreen Immersive Mode
         document.addEventListener("DOMContentLoaded", () => {
             setTimeout(() => {
                 if (window.Capacitor && window.Capacitor.Plugins) {
@@ -1691,21 +1691,14 @@
                         capApp.addListener('backButton', () => { window.history.back(); });
                     }
 
-                    // Logika sinkronisasi warna teks jam/baterai HP dengan Dark Mode aplikasi
+                    // Logika nyembunyiin jam, baterai, dan sinyal (Full Screen murni)
                     if (capStatusBar) {
-                        const isDark = localStorage.getItem('theme') !== 'light';
-                        capStatusBar.setStyle({ style: isDark ? 'DARK' : 'LIGHT' }).catch(()=>{});
-                        
-                        // Otomatis deteksi tiap kali lu mencet tombol ganti tema
-                        const observer = new MutationObserver(() => {
-                            const isNowDark = document.documentElement.classList.contains('dark');
-                            capStatusBar.setStyle({ style: isNowDark ? 'DARK' : 'LIGHT' }).catch(()=>{});
-                        });
-                        observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+                        capStatusBar.hide().catch(()=>{});
                     }
                 }
             }, 500);
         });
     </script>
+
 </body>
 </html>
