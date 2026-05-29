@@ -1666,5 +1666,17 @@
 
         loadLibrary();
     </script>
+    <script>
+        // Nyambungin tombol back fisik Android ke sistem history aplikasi lu
+        document.addEventListener("DOMContentLoaded", () => {
+            setTimeout(() => {
+                if (window.Capacitor && window.Capacitor.Plugins && window.Capacitor.Plugins.App) {
+                    window.Capacitor.Plugins.App.addListener('backButton', () => {
+                        window.history.back();
+                    });
+                }
+            }, 500);
+        });
+    </script>
 </body>
 </html>
