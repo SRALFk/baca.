@@ -75,8 +75,8 @@
             transition: flex 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), background-color 0.3s, border-radius 0.3s; 
             border-radius: 99px; overflow: hidden; white-space: nowrap;
         }
-        .capsule-btn:active { 
-            flex: 2; transform: scale(0.95); border-radius: 12px; 
+        .capsule-btn:active, .capsule-btn.nav-active { 
+            flex: 1.5; transform: scale(0.95); border-radius: 16px; 
             background-color: var(--md-sys-color-primary) !important; color: var(--md-sys-color-on-primary) !important; opacity: 1 !important;
         }
 
@@ -125,8 +125,6 @@
     <!-- VIEW: LIBRARY -->
     <div id="library-view" class="absolute inset-0 flex flex-col overflow-hidden transition-transform duration-500 origin-bottom bg-m3-bg z-10 w-full">
         
-        <!-- FIXED STATIC HEADER -->
-        <!-- FIX 1: Padding Atas untuk Layar Poni/Kamera (Safe Area Inset) di Library View -->
         <header id="main-header" class="flex-none sticky top-0 z-40 bg-m3-bg pt-[calc(env(safe-area-inset-top,0px)+2.5rem)] pb-5 px-5 transition-shadow duration-300">
             <div id="title-area" class="mb-4">
                 <h1 class="text-4xl font-bold tracking-tighter mb-1 text-m3-onBg">Baca.</h1>
@@ -144,7 +142,6 @@
             </div>
         </header>
 
-        <!-- Main Content Area -->
         <div id="library-content-scroll" class="flex-1 overflow-y-auto w-full px-5 pb-32">
             
             <div id="loading-state" class="hidden mb-8 p-5 bg-m3-secondaryContainer text-m3-onSecondaryContainer rounded-[28px]">
@@ -203,60 +200,30 @@
             <p class="text-m3-primary font-bold tracking-widest uppercase text-xs animate-pulse">Memuat Buku...</p>
         </div>
 
-        <!-- FIX 1: Padding Atas untuk Layar Poni/Kamera di Reader (px-2 pb-2 pt-[calc(env(safe-area-inset-top,0px)+0.5rem)]) -->
-        <div id="reader-top-bar" class="flex items-center justify-between px-2 pb-2 pt-[calc(env(safe-area-inset-top,0px)+0.5rem)] bg-m3-surfaceVariant text-m3-onSurfaceVariant shrink-0 z-30 relative rounded-b-[24px]">
-            <button id="btn-back" class="btn-morph p-3"><i data-lucide="arrow-down"></i></button>
-            <div class="flex-1 px-3 text-center overflow-hidden">
-                <span id="reader-title" class="font-bold truncate block text-sm">Title</span>
-                <span id="reader-progress-text" class="text-[0.65rem] font-bold opacity-80 block uppercase tracking-widest">0%</span>
-            </div>
-            <div class="flex gap-1">
-                <button id="btn-fullscreen" onclick="toggleFullscreenReading()" class="btn-morph p-3"><i data-lucide="maximize" class="w-5 h-5"></i></button>
-                <button id="btn-reader-search" class="btn-morph p-3"><i data-lucide="search" class="w-5 h-5"></i></button>
-                <button id="btn-settings" class="btn-morph p-3"><i data-lucide="type" class="w-5 h-5"></i></button>
-                <button id="btn-toc" class="btn-morph p-3"><i data-lucide="list" class="w-5 h-5"></i></button>
-            </div>
-        </div>
-        
-        <button id="btn-exit-fullscreen" onclick="toggleFullscreenReading()" class="hidden fixed bottom-8 right-8 z-[60] fab-capsule flex items-center justify-center bg-m3-primaryContainer text-m3-onPrimaryContainer opacity-80 hover:opacity-100 transition-opacity">
-            <i data-lucide="minimize" class="w-6 h-6 shrink-0"></i>
-        </button>
-        
-        <div id="reader-search-bar" class="hidden bg-m3-surfaceVariant px-4 pb-4 z-20 transition-all w-full shrink-0 rounded-b-[24px]">
-            <div class="search-row" id="inbook-search-row">
-                <div class="search-capsule bg-m3-surface p-1 rounded-full relative">
-                    <i data-lucide="corner-down-right" id="search-icon-inbook" class="w-5 h-5 opacity-70 text-m3-onSurface shrink-0 absolute left-4 pointer-events-none"></i>
-                    <input type="text" id="inbook-search-input" placeholder="..." class="w-full bg-transparent border-none outline-none py-2 pl-10 pr-2 font-bold text-m3-onSurface text-sm">
-                </div>
-                <button id="btn-exec-search-book" onclick="executeSearch()" class="btn-morph btn-settings bg-m3-primary text-m3-onPrimary rounded-full flex items-center justify-center shrink-0" style="background-color: var(--md-sys-color-primary) !important; color: var(--md-sys-color-on-primary) !important;">
-                    <i data-lucide="arrow-right" class="w-5 h-5"></i>
-                </button>
-            </div>
-            <div id="search-results-panel" class="hidden mt-3 max-h-40 overflow-y-auto overflow-x-hidden rounded-xl bg-m3-surface text-sm"></div>
+        <!-- Floating Minimalist Title/Progress (Safe dari Notch) -->
+        <div id="reader-floating-header" class="absolute top-[calc(env(safe-area-inset-top,0px)+1.5rem)] left-1/2 -translate-x-1/2 bg-m3-surfaceVariant/90 backdrop-blur-md text-m3-onSurfaceVariant px-5 py-2 rounded-full z-30 pointer-events-none flex flex-col items-center shadow-sm max-w-[80%] transition-opacity duration-300 border border-m3-onSurfaceVariant/10">
+            <span id="reader-title" class="font-bold truncate w-full text-center text-xs">Title</span>
+            <span id="reader-progress-text" class="text-[0.6rem] font-bold opacity-80 uppercase tracking-widest mt-0.5">0%</span>
         </div>
 
-        <!-- FIX 2: Menambahkan ID ke container progress bar biar bisa di-hide saat fullscreen -->
-        <div id="progress-container" class="h-1 w-full bg-m3-surfaceVariant shrink-0">
-            <div id="reading-progress-bar" class="h-full bg-m3-primary progress-smooth w-0"></div>
-        </div>
-
+        <!-- AREA KONTEN -->
         <div class="flex-1 relative overflow-hidden flex w-full">
-            <div id="reader-content" class="absolute inset-0 overflow-y-auto overflow-x-hidden px-5 py-6 pb-40 scroll-smooth reader-dynamic-text w-full">
+            <div id="reader-content" class="absolute inset-0 overflow-y-auto overflow-x-hidden px-5 pt-24 pb-40 scroll-smooth reader-dynamic-text w-full">
                 <div id="reader-inner" class="max-w-4xl mx-auto reader-text-container space-y-5"></div>
             </div>
 
-            <div id="side-panel-overlay" class="hidden absolute inset-0 bg-transparent z-30" onclick="history.back()"></div>
+            <div id="side-panel-overlay" class="hidden absolute inset-0 bg-black/20 z-30 transition-opacity" onclick="history.back()"></div>
 
             <div id="toc-panel" class="side-panel absolute right-0 top-0 bottom-0 w-72 bg-m3-surfaceVariant p-6 transform translate-x-full opacity-0 z-40 overflow-y-auto rounded-l-[32px]">
-                <h3 class="text-lg font-bold mb-6 text-m3-onSurfaceVariant flex items-center gap-2"><i data-lucide="list-tree"></i> Table of Contents</h3>
-                <div id="toc-list" class="space-y-2 flex flex-col"></div>
+                <h3 class="text-lg font-bold mb-6 text-m3-onSurfaceVariant flex items-center gap-2"><i data-lucide="list-tree"></i> Daftar Isi</h3>
+                <div id="toc-list" class="space-y-2 flex flex-col pb-20"></div>
             </div>
             
             <div id="settings-panel" class="side-panel absolute right-0 top-0 bottom-0 w-72 bg-m3-surfaceVariant p-6 transform translate-x-full opacity-0 z-40 overflow-y-auto rounded-l-[32px]">
-                <h3 class="text-lg font-bold mb-6 text-m3-onSurfaceVariant flex items-center gap-2"><i data-lucide="sliders-horizontal"></i> Appearance</h3>
-                <div class="space-y-6">
+                <h3 class="text-lg font-bold mb-6 text-m3-onSurfaceVariant flex items-center gap-2"><i data-lucide="sliders-horizontal"></i> Tampilan</h3>
+                <div class="space-y-6 pb-20">
                     <div>
-                        <label class="text-xs font-bold opacity-70 block mb-3 uppercase tracking-wider">Theme Mode</label>
+                        <label class="text-xs font-bold opacity-70 block mb-3 uppercase tracking-wider">Mode Tema</label>
                         <div class="capsule-group bg-m3-surface p-1 rounded-full">
                             <button id="theme-btn-light" onclick="setReaderTheme('light')" class="capsule-btn py-2 font-bold text-xs">Light</button>
                             <button id="theme-btn-dark" onclick="setReaderTheme('dark')" class="capsule-btn py-2 font-bold text-xs">Dark</button>
@@ -264,7 +231,7 @@
                         </div>
                     </div>
                     <div>
-                        <label class="text-xs font-bold opacity-70 block mb-3 uppercase tracking-wider">Font Size</label>
+                        <label class="text-xs font-bold opacity-70 block mb-3 uppercase tracking-wider">Ukuran Teks</label>
                         <div class="capsule-group bg-m3-surface p-1 rounded-full">
                             <button id="typo-sz-sm" onclick="changeTypo('size', '1rem')" class="capsule-btn py-2 font-bold text-xs">Small</button>
                             <button id="typo-sz-md" onclick="changeTypo('size', '1.2rem')" class="capsule-btn py-2 font-bold text-xs">Med</button>
@@ -272,7 +239,7 @@
                         </div>
                     </div>
                     <div>
-                        <label class="text-xs font-bold opacity-70 block mb-3 uppercase tracking-wider">Text Alignment</label>
+                        <label class="text-xs font-bold opacity-70 block mb-3 uppercase tracking-wider">Perataan Teks</label>
                         <div class="capsule-group bg-m3-surface p-1 rounded-full">
                             <button id="typo-al-left" onclick="changeTypo('align', 'left')" class="capsule-btn py-2"><i data-lucide="align-left" class="w-4 h-4"></i></button>
                             <button id="typo-al-center" onclick="changeTypo('align', 'center')" class="capsule-btn py-2"><i data-lucide="align-center" class="w-4 h-4"></i></button>
@@ -280,7 +247,7 @@
                         </div>
                     </div>
                     <div>
-                        <label class="text-xs font-bold opacity-70 block mb-3 uppercase tracking-wider">Font Family</label>
+                        <label class="text-xs font-bold opacity-70 block mb-3 uppercase tracking-wider">Jenis Font</label>
                         <div class="flex flex-col gap-2">
                             <button id="typo-fn-lora" onclick="changeTypo('font', 'Lora')" class="btn-morph py-3 px-4 bg-m3-surface rounded-2xl text-left font-serif font-bold text-sm">Lora</button>
                             <button id="typo-fn-merri" onclick="changeTypo('font', 'Merriweather')" class="btn-morph py-3 px-4 bg-m3-surface rounded-2xl text-left font-merriweather font-bold text-sm">Merriweather</button>
@@ -292,6 +259,56 @@
                 </div>
             </div>
         </div>
+
+        <!-- SEARCH BAR MENGAMBANG DI ATAS BOTTOM BAR -->
+        <div id="reader-search-bar" class="hidden absolute bottom-24 left-4 right-4 bg-m3-surfaceVariant p-2 z-40 rounded-3xl shadow-lg transition-all">
+            <div class="search-row" id="inbook-search-row">
+                <div class="search-capsule bg-m3-surface p-1 rounded-full relative">
+                    <i data-lucide="corner-down-right" id="search-icon-inbook" class="w-5 h-5 opacity-70 text-m3-onSurface shrink-0 absolute left-4 pointer-events-none"></i>
+                    <input type="text" id="inbook-search-input" placeholder="Cari dalam buku..." class="w-full bg-transparent border-none outline-none py-2 pl-10 pr-2 font-bold text-m3-onSurface text-sm">
+                </div>
+                <button id="btn-exec-search-book" onclick="executeSearch()" class="btn-morph btn-settings bg-m3-primary text-m3-onPrimary rounded-full flex items-center justify-center shrink-0" style="background-color: var(--md-sys-color-primary) !important; color: var(--md-sys-color-on-primary) !important;">
+                    <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                </button>
+            </div>
+            <div id="search-results-panel" class="hidden mt-3 max-h-40 overflow-y-auto overflow-x-hidden rounded-xl bg-m3-surface text-sm"></div>
+        </div>
+
+        <!-- PROGRESS BAR -->
+        <div id="progress-container" class="h-1 w-full bg-m3-surfaceVariant shrink-0 z-40 relative">
+            <div id="reading-progress-bar" class="h-full bg-m3-primary progress-smooth w-0"></div>
+        </div>
+
+        <!-- BOTTOM NAV BAR (PENGGANTI TOP BAR) -->
+        <div id="reader-bottom-bar" class="bg-m3-surfaceVariant px-2 pt-2 pb-[calc(env(safe-area-inset-bottom,0px)+0.5rem)] shrink-0 z-40 relative border-t border-m3-onSurfaceVariant/5">
+            <div class="capsule-group bg-transparent rounded-full h-[60px]">
+                <button id="btn-back" class="capsule-btn flex-col gap-1 text-m3-onSurfaceVariant transition-all">
+                    <i data-lucide="arrow-left" class="w-5 h-5 pointer-events-none"></i>
+                    <span class="text-[10px] font-bold pointer-events-none">Kembali</span>
+                </button>
+                <button id="btn-toc" class="capsule-btn flex-col gap-1 text-m3-onSurfaceVariant transition-all">
+                    <i data-lucide="list" class="w-5 h-5 pointer-events-none"></i>
+                    <span class="text-[10px] font-bold pointer-events-none">Daftar Isi</span>
+                </button>
+                <button id="btn-reader-search" class="capsule-btn flex-col gap-1 text-m3-onSurfaceVariant transition-all">
+                    <i data-lucide="search" class="w-5 h-5 pointer-events-none"></i>
+                    <span class="text-[10px] font-bold pointer-events-none">Cari</span>
+                </button>
+                <button id="btn-settings" class="capsule-btn flex-col gap-1 text-m3-onSurfaceVariant transition-all">
+                    <i data-lucide="type" class="w-5 h-5 pointer-events-none"></i>
+                    <span class="text-[10px] font-bold pointer-events-none">Teks</span>
+                </button>
+                <button id="btn-fullscreen" onclick="toggleFullscreenReading()" class="capsule-btn flex-col gap-1 text-m3-onSurfaceVariant transition-all">
+                    <i data-lucide="maximize" class="w-5 h-5 pointer-events-none"></i>
+                    <span class="text-[10px] font-bold pointer-events-none">Penuh</span>
+                </button>
+            </div>
+        </div>
+        
+        <button id="btn-exit-fullscreen" onclick="toggleFullscreenReading()" class="hidden fixed bottom-8 right-8 z-[60] fab-capsule flex items-center justify-center bg-m3-primaryContainer text-m3-onPrimaryContainer opacity-80 hover:opacity-100 transition-opacity">
+            <i data-lucide="minimize" class="w-6 h-6 shrink-0"></i>
+        </button>
+        
     </div>
 
     <!-- Welcome Modal -->
@@ -380,7 +397,7 @@
         </div>
     </div>
 
-    <!-- Book Options Modal (No Blur, with Select Multiple option) -->
+    <!-- Book Options Modal -->
     <div id="b-opt-modal" onclick="if(event.target === this) history.back()" class="hidden modal-overlay fixed inset-0 bg-black/60 z-[100] flex items-end justify-center opacity-0 p-4 pb-8 transition-opacity">
         <div class="modal-content bg-m3-surface shadow-2xl w-full max-w-sm rounded-[32px] p-6 transform translate-y-full border-none" id="b-opt-sheet">
             <div class="w-12 h-1.5 bg-m3-onSurfaceVariant/30 rounded-full mx-auto mb-6"></div>
@@ -517,12 +534,19 @@
             grid: document.getElementById('book-grid'), empty: document.getElementById('empty-state'),
             topSection: document.getElementById('continue-reading-section'), topSlider: document.getElementById('top-books-slider'),
             load: document.getElementById('loading-state'), loadTxt: document.getElementById('loading-text'), loadBar: document.getElementById('loading-bar'), loadPct: document.getElementById('loading-percent'),
-            file: document.getElementById('doc-upload'), backBtn: document.getElementById('btn-back'),
+            file: document.getElementById('doc-upload'), 
+            
+            // TOMBOL DARI BOTTOM NAV
+            backBtn: document.getElementById('btn-back'),
+            tocBtn: document.getElementById('btn-toc'), 
+            setBtn: document.getElementById('btn-settings'),
+            searchBtn: document.getElementById('btn-reader-search'), 
+            
             inner: document.getElementById('reader-inner'), title: document.getElementById('reader-title'), count: document.getElementById('library-count'),
-            tocBtn: document.getElementById('btn-toc'), tocPanel: document.getElementById('toc-panel'), tocList: document.getElementById('toc-list'),
-            setBtn: document.getElementById('btn-settings'), setPanel: document.getElementById('settings-panel'),
+            tocPanel: document.getElementById('toc-panel'), tocList: document.getElementById('toc-list'),
+            setPanel: document.getElementById('settings-panel'),
             readContent: document.getElementById('reader-content'), progBar: document.getElementById('reading-progress-bar'), progTxt: document.getElementById('reader-progress-text'),
-            searchBtn: document.getElementById('btn-reader-search'), searchBar: document.getElementById('reader-search-bar'), searchInput: document.getElementById('inbook-search-input'), searchExec: document.getElementById('btn-exec-search'), searchRes: document.getElementById('search-results-panel'),
+            searchBar: document.getElementById('reader-search-bar'), searchInput: document.getElementById('inbook-search-input'), searchExec: document.getElementById('btn-exec-search'), searchRes: document.getElementById('search-results-panel'),
             globalSearch: document.getElementById('global-search')
         };
 
@@ -534,7 +558,26 @@
             });
         }
 
-        // --- LOGIKA GLOBAL MENGUNCUPKAN SEARCH BAR (KLIK DI LUAR) ---
+        // FUNGSI AKTIVASI NAVIGASI BAWAH (WARNA)
+        function updateBottomNavUI(activeId) {
+            const btns = ['btn-toc', 'btn-reader-search', 'btn-settings'];
+            btns.forEach(id => {
+                const b = document.getElementById(id);
+                if(b) {
+                    b.classList.remove('bg-m3-primary', 'text-m3-onPrimary', 'nav-active');
+                    b.classList.add('text-m3-onSurfaceVariant');
+                }
+            });
+            if(activeId) {
+                const act = document.getElementById(activeId);
+                if(act) {
+                    act.classList.add('bg-m3-primary', 'text-m3-onPrimary', 'nav-active');
+                    act.classList.remove('text-m3-onSurfaceVariant');
+                }
+            }
+        }
+
+        // LOGIKA GLOBAL MENGUNCUPKAN SEARCH BAR (KLIK DI LUAR)
         document.addEventListener('click', (e) => {
             const searchArea = document.getElementById('search-area');
             if (searchArea && searchArea.classList.contains('search-active')) {
@@ -545,13 +588,14 @@
             
             const inbookSearchRow = document.getElementById('inbook-search-row');
             if (inbookSearchRow && inbookSearchRow.classList.contains('search-active')) {
-                if (!inbookSearchRow.contains(e.target)) {
+                // FIX BUG: Cegah penutupan kalo yang di-klik adalah tombol search di bottom nav
+                const isSearchBtnClick = e.target.closest('#btn-reader-search');
+                if (!inbookSearchRow.contains(e.target) && !isSearchBtnClick) {
                     closeInbookSearch(false);
                 }
             }
         });
 
-        // Logic Search Main Menu
         const searchArea = document.getElementById('search-area');
         const searchCapsule = document.querySelector('.search-capsule');
         
@@ -564,7 +608,6 @@
 
         searchCapsule.addEventListener('click', (e) => {
             if (searchArea.classList.contains('search-active')) {
-                // Tutup search jika yang diklik adalah background kapsul/ikon (bukan input ketik)
                 if (e.target !== DOM.globalSearch) {
                     closeSearch(false);
                 }
@@ -585,10 +628,8 @@
             }
         };
 
-        // Logic Search In-Book (Dalam Buku)
         const inbookSearchRow = document.getElementById('inbook-search-row');
         const inbookSearchInput = document.getElementById('inbook-search-input');
-        const inbookSearchCapsule = document.querySelector('#inbook-search-row .search-capsule');
 
         inbookSearchInput.addEventListener('focus', () => {
             if (!inbookSearchRow.classList.contains('search-active')) {
@@ -597,24 +638,17 @@
             }
         });
 
-        if (inbookSearchCapsule) {
-            inbookSearchCapsule.addEventListener('click', (e) => {
-                if (inbookSearchRow.classList.contains('search-active')) {
-                    if (e.target !== inbookSearchInput) {
-                        closeInbookSearch(false);
-                    }
-                } else {
-                    inbookSearchInput.focus();
-                }
-            });
-        }
-
         window.closeInbookSearch = function(fromHistory = false) {
             if (inbookSearchRow.classList.contains('search-active')) {
                 inbookSearchRow.classList.remove('search-active');
                 inbookSearchInput.blur();
                 if (!fromHistory && window.location.hash === '#inbook-search') {
                     history.back();
+                }
+                
+                // Kalo panel tertutup, hapus status active di nav bar
+                if(DOM.searchBar.classList.contains('hidden') && activePanel !== 'search') {
+                    updateBottomNavUI(null);
                 }
             }
         };
@@ -623,7 +657,7 @@
         let activeOptsId = null; let currentSelection = { text: "", nodeIdx: -1 }; let activeAnnotationId = null;
         
         let isBatchDeleteMode = false;
-        let selectedForDelete = []; // Kembali menggunakan Array untuk bisa tracking nomor antrian
+        let selectedForDelete = [];
         
         window.addEventListener('popstate', (e) => {
             if (!document.getElementById('ai-modal').classList.contains('opacity-0')) { closeAiModal(true); }
@@ -675,10 +709,8 @@
         window.triggerSelectMode = function() {
             if(!activeOptsId) return;
             const targetId = activeOptsId;
-            history.back(); // Trigger popstate untuk nutup modal
-            setTimeout(() => {
-                toggleBatchDelete(false, targetId);
-            }, 350); 
+            history.back(); 
+            setTimeout(() => { toggleBatchDelete(false, targetId); }, 350); 
         }
 
         window.toggleBatchDelete = function(isFromHistory = false, initialSelectId = null) {
@@ -709,12 +741,10 @@
         };
 
         window.updateBatchSelectionUI = function() {
-            // Update the counter text
             const countEl = document.getElementById('batch-delete-count');
             const d = i18n[wikiLang] || i18n['id'];
             if(countEl) countEl.textContent = `${selectedForDelete.length} ${d.selected}`;
 
-            // Update all cards visually
             document.querySelectorAll('.batch-overlay').forEach(el => {
                 const id = el.dataset.bookId;
                 const idx = selectedForDelete.indexOf(id);
@@ -831,7 +861,6 @@
                 if (amoContainer) amoContainer.classList.add('hidden');
             }
 
-            // Sync Capsule groups
             const tl = document.getElementById('theme-btn-light');
             const td = document.getElementById('theme-btn-dark');
             const ta = document.getElementById('theme-btn-amoled');
@@ -876,22 +905,25 @@
         }
         document.addEventListener("DOMContentLoaded", () => { syncWikiLangUI(); applyLanguage(); });
 
-        // FIX 2: Logika Immersive Mode diperbarui. Hide progress bar supaya garis abu hilang sepenuhnya
         window.toggleFullscreenReading = function() {
-            const bar = document.getElementById('reader-top-bar');
+            const bottomBar = document.getElementById('reader-bottom-bar');
+            const floatHeader = document.getElementById('reader-floating-header');
             const searchBar = document.getElementById('reader-search-bar');
             const progContainer = document.getElementById('progress-container');
             const exitBtn = document.getElementById('btn-exit-fullscreen');
             
-            if (bar.classList.contains('hidden')) {
-                bar.classList.remove('hidden'); 
+            if (bottomBar.classList.contains('hidden')) {
+                bottomBar.classList.remove('hidden'); 
+                floatHeader.classList.remove('opacity-0');
                 progContainer.classList.remove('hidden');
                 exitBtn.classList.add('hidden');
             } else {
-                bar.classList.add('hidden'); 
+                bottomBar.classList.add('hidden'); 
+                floatHeader.classList.add('opacity-0');
                 searchBar.classList.add('hidden'); 
                 progContainer.classList.add('hidden');
                 exitBtn.classList.remove('hidden');
+                updateBottomNavUI(null);
                 if(activePanel) { _closeSidePanelsAction(); } 
             }
         };
@@ -1065,7 +1097,6 @@
             DOM.count.textContent = `${filteredLib.length} ${i18n[wikiLang].booksCount}`;
             
             let topBooks = [];
-            // Slice the top reading to max 4 items
             if (!filterText) { topBooks = library.filter(b => b.progressPct > 0).sort((a,b) => b.progressPct - a.progressPct).slice(0, 4); }
 
             if (topBooks.length > 0) {
@@ -1082,7 +1113,7 @@
                 if(document.getElementById('collection-heading')) document.getElementById('collection-heading').classList.remove('hidden');
                 filteredLib.forEach((book, index) => { DOM.grid.appendChild(createBookCard(book, false, index)); });
                 lucide.createIcons();
-                updateBatchSelectionUI(); // Pastikan overlay update setelah render
+                updateBatchSelectionUI(); 
             }
         }
         
@@ -1210,6 +1241,7 @@
             window.getSelection().removeAllRanges();
             const menu = document.getElementById('selection-menu');
             if(menu) { menu.classList.add('opacity-0', 'scale-75'); setTimeout(() => menu.classList.add('hidden'), 200); }
+            updateBottomNavUI(null);
         }
         DOM.backBtn.addEventListener('click', () => history.back());
 
@@ -1217,22 +1249,43 @@
             if (!isFromHistory) { history.back(); return; }
             DOM.tocPanel.classList.add('translate-x-full', 'opacity-0'); DOM.setPanel.classList.add('translate-x-full', 'opacity-0'); 
             const overlay = document.getElementById('side-panel-overlay'); if(overlay) overlay.classList.add('hidden');
-            activePanel = null; 
+            activePanel = null;
+            updateBottomNavUI(null);
         }
-        function togglePanel(panelEl, name) { 
+
+        function togglePanel(panelEl, name, btnId) { 
             if(!DOM.searchBar.classList.contains('hidden')) { DOM.searchBar.classList.add('hidden'); DOM.searchRes.classList.add('hidden'); }
             if(activePanel === name) { history.back(); return; } 
-            if(activePanel) { _closeSidePanelsAction(true); history.replaceState({ state: `panel-${name}` }, '', `#panel-${name}`); } 
-            else { pushAppHistory(`panel-${name}`); }
+            
+            if(activePanel) { 
+                _closeSidePanelsAction(true); 
+                history.replaceState({ state: `panel-${name}` }, '', `#panel-${name}`); 
+            } else { 
+                pushAppHistory(`panel-${name}`); 
+            }
+            
             panelEl.classList.remove('translate-x-full', 'opacity-0'); 
             const overlay = document.getElementById('side-panel-overlay'); if(overlay) overlay.classList.remove('hidden');
             activePanel = name; 
+            updateBottomNavUI(btnId);
         }
-        DOM.tocBtn.onclick = () => togglePanel(DOM.tocPanel, 'toc'); DOM.setBtn.onclick = () => togglePanel(DOM.setPanel, 'set');
 
-        DOM.searchBtn.onclick = () => { 
+        DOM.tocBtn.onclick = () => togglePanel(DOM.tocPanel, 'toc', 'btn-toc'); 
+        DOM.setBtn.onclick = () => togglePanel(DOM.setPanel, 'set', 'btn-settings');
+
+        // FIX BUG: Tombol Search
+        DOM.searchBtn.onclick = (e) => { 
+            e.stopPropagation(); // Biar efek kliknya gak tembus ke document yg manggil closeInbookSearch
+            
             if (activePanel) { history.back(); }
-            DOM.searchBar.classList.toggle('hidden'); if(!DOM.searchBar.classList.contains('hidden')) DOM.searchInput.focus(); 
+            
+            DOM.searchBar.classList.toggle('hidden'); 
+            if(!DOM.searchBar.classList.contains('hidden')) {
+                DOM.searchInput.focus(); 
+                updateBottomNavUI('btn-reader-search');
+            } else {
+                updateBottomNavUI(null);
+            }
         };
         
         window.executeSearch = function() {
@@ -1280,6 +1333,7 @@
                             }, 2000);
                         }
                         DOM.searchBar.classList.add('hidden');
+                        updateBottomNavUI(null);
                     };
                     DOM.searchRes.appendChild(btn);
                 });
@@ -1425,7 +1479,6 @@
             }
         };
 
-        // Wikipedia Fetch / Ask AI lookup
         window.lookupDictionary = async function() {
             if(currentSelection.nodeIdx === -1) return; const term = currentSelection.text; hideSelectionMenu();
             
@@ -1672,7 +1725,6 @@
         loadLibrary();
     </script>
     <script>
-        // Nyambungin tombol back fisik Android ke sistem history aplikasi lu
         document.addEventListener("DOMContentLoaded", () => {
             setTimeout(() => {
                 if (window.Capacitor && window.Capacitor.Plugins && window.Capacitor.Plugins.App) {
@@ -1684,19 +1736,14 @@
         });
     </script>
     <script>
-        // Nyambungin native Android & Fullscreen Immersive Mode
         document.addEventListener("DOMContentLoaded", () => {
             setTimeout(() => {
                 if (window.Capacitor && window.Capacitor.Plugins) {
                     const capApp = window.Capacitor.Plugins.App;
                     const capStatusBar = window.Capacitor.Plugins.StatusBar;
-                    
-                    // Eksekusi Tombol Back fisik
                     if (capApp) {
                         capApp.addListener('backButton', () => { window.history.back(); });
                     }
-
-                    // Logika nyembunyiin jam, baterai, dan sinyal (Full Screen murni)
                     if (capStatusBar) {
                         capStatusBar.hide().catch(()=>{});
                     }
