@@ -1678,5 +1678,34 @@
             }, 500);
         });
     </script>
+    <script>
+        // Nyambungin native Android (Back button & sinkronisasi warna Status Bar)
+        document.addEventListener("DOMContentLoaded", () => {
+            setTimeout(() => {
+                if (window.Capacitor && window.Capacitor.Plugins) {
+                    const capApp = window.Capacitor.Plugins.App;
+                    const capStatusBar = window.Capacitor.Plugins.StatusBar;
+                    
+                    // Eksekusi Tombol Back fisik
+                    if (capApp) {
+                        capApp.addListener('backButton', () => { window.history.back(); });
+                    }
+
+                    // Logika sinkronisasi warna teks jam/baterai HP dengan Dark Mode aplikasi
+                    if (capStatusBar) {
+                        const isDark = localStorage.getItem('theme') !== 'light';
+                        capStatusBar.setStyle({ style: isDark ? 'DARK' : 'LIGHT' }).catch(()=>{});
+                        
+                        // Otomatis deteksi tiap kali lu mencet tombol ganti tema
+                        const observer = new MutationObserver(() => {
+                            const isNowDark = document.documentElement.classList.contains('dark');
+                            capStatusBar.setStyle({ style: isNowDark ? 'DARK' : 'LIGHT' }).catch(()=>{});
+                        });
+                        observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+                    }
+                }
+            }, 500);
+        });
+    </script>
 </body>
 </html>
