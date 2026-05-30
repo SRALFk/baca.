@@ -17,7 +17,7 @@ The UI of **Baca.** is anything but static. We deeply adopted the **Material 3 E
  * **In-Book Search Engine:** A highly intuitive search bar integrated right into the side panel. Instantly sweeps through the book and auto-scrolls to the exact highlighted paragraph.
  * **Typography Control:** Ultimate reading comfort. Adjust text size, paragraph alignment, and pick from premium fonts (*Lora, Merriweather, Playfair, Inter, Space Mono*).
  * **Bilingual Support:** Interface is fully available in English and Indonesian.
- * **PWA Ready:** Install **Baca.** directly to your phone's home screen via any modern browser (Chrome/Safari) and experience it as a native app.
+   
 ## 📦 Download & Installation
 The first stable release is ready. You can grab the source code or check out the v1.0.0 release using the link below:
 👉 **Download Release v1.0.0** https://github.com/dyunayuna90-bit/baca./releases/tag/v1.0.0**
