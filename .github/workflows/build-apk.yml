@@ -71,11 +71,13 @@ jobs:
         run: |
           cd android
           chmod +x gradlew
-          # PAKSA Gradle pakai KTP abadi secara mutlak di command line
-          ./gradlew assembleDebug -Pandroid.injected.signing.store.file=../debug.keystore -Pandroid.injected.signing.store.password=android -Pandroid.injected.signing.key.alias=androiddebugkey -Pandroid.injected.signing.key.password=android
+          # PERBAIKAN MUTLAK DI SINI: Pakai Alamat Absolut (${{ github.workspace }})
+          # Biar semua sub-plugin ga nyasar pas nyari file KTP
+          ./gradlew assembleDebug -Pandroid.injected.signing.store.file=${{ github.workspace }}/debug.keystore -Pandroid.injected.signing.store.password=android -Pandroid.injected.signing.key.alias=androiddebugkey -Pandroid.injected.signing.key.password=android
 
       - name: Upload APK Artifact
         uses: actions/upload-artifact@v4
         with:
           name: Baca-App-APK
           path: android/app/build/outputs/apk/debug/app-debug.apk
+
