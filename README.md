@@ -53,7 +53,7 @@ Most e-book readers on the market fall into two frustrating extremes: they are e
  * **LocalForage** (Asynchronous storage management).
  * **Lucide Icons** (Clean and modern iconography).
 ## ☕ Support
-This application is developed for the reading community that craves comfort and absolute privacy. If you find this app useful and want to support its ongoing development, consider buying the developer a coffee!
+This application is developed for the reading community that craves comfort and privacy. If you find this app useful and want to support its ongoing development, consider buying the developer a coffee!
 
 <a href="https://saweria.co/Densl" target="_blank">
   <img src="https://img.shields.io/badge/Saweria-Buy_Me_A_Coffee-FFCE00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black" alt="Support via Saweria">
