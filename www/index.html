@@ -123,7 +123,6 @@
     <!-- VIEW: LIBRARY -->
     <div id="library-view" class="absolute inset-0 flex flex-col overflow-hidden transition-transform duration-500 origin-bottom bg-m3-bg z-10 w-full">
         
-        <!-- Header main menu -->
         <header id="main-header" class="flex-none sticky top-0 z-40 bg-m3-bg pt-[calc(env(safe-area-inset-top,0px)+4.5rem)] pb-5 px-5 transition-shadow duration-300">
             <div id="title-area" class="mb-4">
                 <h1 class="text-4xl font-bold tracking-tighter mb-1 text-m3-onBg">Baca.</h1>
@@ -223,7 +222,6 @@
                 
                 <div class="space-y-6 pb-20">
                     
-                    <!-- FITUR PENCARIAN -->
                     <div>
                         <label id="str-set-search" class="text-xs font-bold opacity-70 block mb-3 uppercase tracking-wider">Pencarian</label>
                         <div class="search-capsule bg-m3-surface p-1 rounded-full relative flex items-center h-14 border border-m3-onSurface/10 transition-all duration-300">
@@ -311,11 +309,11 @@
                 <h2 id="str-wel-title" class="text-3xl font-bold text-m3-onSurface mb-2 tracking-tight">Selamat Datang di Baca.</h2>
                 <p id="str-wel-desc" class="text-m3-onSurfaceVariant mb-8 font-medium">Harap baca instruksi berikut untuk pengalaman membaca yang optimal.</p>
                 <div class="flex flex-col gap-4">
-                    <!-- Instruksi Backup & Restore (menggantikan PWA/Instalasi) -->
+                    <!-- Instruksi Backup -->
                     <div class="bg-m3-surfaceVariant p-5 rounded-3xl pb-6 border-l-4 border-m3-primary">
                         <i data-lucide="database-backup" class="text-m3-primary mb-3 w-6 h-6"></i>
                         <h3 id="str-wel-backup" class="font-bold mb-1 text-sm">Pencadangan Data</h3>
-                        <p id="str-wel-backup-desc" class="text-xs opacity-80 leading-relaxed font-medium">Gunakan fitur Backup di menu Pengaturan untuk mengunduh progres dan buku Anda. File akan tersimpan di folder <b>Unduhan (Downloads)</b> pada perangkat Anda.</p>
+                        <p id="str-wel-backup-desc" class="text-xs opacity-80 leading-relaxed font-medium">Gunakan fitur Backup di menu Pengaturan. Karena keamanan sistem, Anda bisa membagikan data tersebut ke memori perangkat atau Drive secara langsung.</p>
                     </div>
                     <div class="bg-m3-surfaceVariant p-5 rounded-3xl pb-6">
                         <i data-lucide="file-warning" class="text-m3-primary mb-3 w-6 h-6"></i>
@@ -335,7 +333,7 @@
         </div>
     </div>
 
-    <!-- Global Settings Modal (Bisa di-swipe ke bawah untuk close) -->
+    <!-- Global Settings Modal -->
     <div id="global-settings-modal" onclick="if(event.target === this) history.back()" class="hidden modal-overlay fixed inset-0 bg-black/60 z-[100] flex items-end justify-center opacity-0">
         <div class="modal-content bg-m3-surface w-full max-w-md rounded-t-[48px] p-6 pb-12 transform translate-y-full border-none max-h-[90dvh] overflow-y-auto hide-scroll will-change-transform" id="global-settings-sheet">
             <div class="w-12 h-1.5 bg-m3-onSurfaceVariant/30 rounded-full mx-auto mb-6 shrink-0 sticky top-0"></div>
@@ -357,7 +355,6 @@
                 </div>
             </div>
 
-            <!-- Palet Warna -->
             <h4 id="str-set-palette" class="text-xs font-bold opacity-70 mb-3 px-1 uppercase tracking-wider">Palet Tema</h4>
             <div class="grid grid-cols-5 gap-3 mb-4">
                 <button onclick="setTheme('purple')" class="btn-morph w-full aspect-square rounded-2xl bg-[#6750A4]"></button>
@@ -378,12 +375,12 @@
                 <button id="wiki-lang-en" onclick="setWikiLang('en')" class="capsule-btn py-3 font-bold text-xs text-m3-onSurfaceVariant">English</button>
             </div>
 
-            <!-- Fitur Data Backup / Restore -->
+            <!-- Fitur Data Backup / Restore via Share API -->
             <h4 id="str-set-data" class="text-xs font-bold opacity-70 mb-3 px-1 mt-6 uppercase tracking-wider">Data Aplikasi</h4>
             <div class="flex gap-2 mb-4">
                 <button onclick="exportData()" class="flex-1 flex flex-col items-center justify-center gap-2 p-3 bg-m3-surfaceVariant text-m3-onSurfaceVariant rounded-2xl font-bold btn-morph text-xs relative overflow-hidden group">
-                    <i data-lucide="download" class="w-5 h-5 transition-transform group-active:scale-90"></i> 
-                    <span id="str-btn-backup">Backup</span>
+                    <i data-lucide="share-2" class="w-5 h-5 transition-transform group-active:scale-90"></i> 
+                    <span id="str-btn-backup">Backup / Share</span>
                 </button>
                 <button onclick="document.getElementById('import-upload').click()" class="flex-1 flex flex-col items-center justify-center gap-2 p-3 bg-m3-surfaceVariant text-m3-onSurfaceVariant rounded-2xl font-bold btn-morph text-xs relative overflow-hidden group">
                     <i data-lucide="upload" class="w-5 h-5 transition-transform group-active:scale-90"></i> 
@@ -674,12 +671,12 @@
                 extractingCover: "Mengekstrak Sampul...", readingPage: "Membaca Halaman", formattingText: "Memformat Teks...",
                 extractingEpub: "Mengekstrak EPUB...", analyzingStruct: "Menganalisa Struktur...", extractingChapter: "Mengekstrak Bab",
                 welcomeTitle: "Selamat Datang di Baca.", welcomeDesc: "Harap baca instruksi berikut untuk pengalaman membaca yang optimal.",
-                welBackup: "Pencadangan Data", welBackupDesc: "Gunakan fitur Backup di menu Pengaturan untuk mengunduh progres dan buku Anda. File akan tersimpan di folder <b>Unduhan (Downloads)</b> pada perangkat Anda.",
+                welBackup: "Pencadangan Data", welBackupDesc: "Gunakan fitur Backup di menu Pengaturan. Karena keamanan sistem, Anda bisa membagikan data tersebut ke memori perangkat atau Drive secara langsung.",
                 welFormat: "Batasan Format", welFormatDesc: "<b>PDF:</b> Hanya teks. Gambar diabaikan.<br><b>EPUB:</b> Didukung penuh.",
                 welPrivacy: "Privasi Total", welPrivacyDesc: "Diproses secara lokal di perangkat Anda.", welBtn: "Mengerti",
                 setMainTitle: "Pengaturan", setPalette: "Palet Tema", setLang: "Bahasa", setInfo: "Info & Dukungan",
                 btnInfo: "Lihat Instruksi", btnDonate: "Traktir Kopi (Donasi)", btnClose: "Tutup",
-                setData: "Data Aplikasi", btnBackup: "Backup", btnRestore: "Pulihkan",
+                setData: "Data Aplikasi", btnBackup: "Backup / Share", btnRestore: "Pulihkan",
                 navBack: "Kembali", navToc: "Daftar Isi", navSearch: "Pencarian", navText: "Teks", navFull: "Penuh",
                 readerLoading: "Memuat Buku...", tocTitle: "Daftar Isi", setTitle: "Tampilan",
                 setTheme: "Mode Tema", setSize: "Ukuran Teks", setAlign: "Perataan Teks", setFont: "Jenis Font",
@@ -697,12 +694,12 @@
                 extractingCover: "Extracting Cover...", readingPage: "Reading Page", formattingText: "Formatting Text...",
                 extractingEpub: "Extracting EPUB...", analyzingStruct: "Analyzing Structure...", extractingChapter: "Extracting Chapter",
                 welcomeTitle: "Welcome to Baca.", welcomeDesc: "Please read these instructions for the optimal reading experience.",
-                welBackup: "Data Backup", welBackupDesc: "Use the Backup feature in Settings to download your progress and books. The file will be saved to your device's <b>Downloads</b> folder.",
+                welBackup: "Data Backup", welBackupDesc: "Use the Backup feature in Settings. Due to system security, you can share or save the data directly to your device storage or Drive.",
                 welFormat: "Format Limitations", welFormatDesc: "<b>PDF:</b> Text only. Images ignored.<br><b>EPUB:</b> Fully supported.",
                 welPrivacy: "Total Privacy", welPrivacyDesc: "Processed locally on your device.", welBtn: "Got it",
                 setMainTitle: "Settings", setPalette: "Theme Palette", setLang: "Language", setInfo: "Info & Support",
                 btnInfo: "View Instructions", btnDonate: "Buy Me a Coffee", btnClose: "Close",
-                setData: "App Data", btnBackup: "Backup", btnRestore: "Restore",
+                setData: "App Data", btnBackup: "Backup / Share", btnRestore: "Restore",
                 navBack: "Back", navToc: "Contents", navSearch: "Search", navText: "Text", navFull: "Full",
                 readerLoading: "Loading Book...", tocTitle: "Table of Contents", setTitle: "Appearance",
                 setTheme: "Theme Mode", setSize: "Text Size", setAlign: "Text Alignment", setFont: "Font Family",
@@ -815,7 +812,7 @@
             setTimeout(() => m.classList.add('hidden'), 300);
         };
 
-        // FITUR BACKUP & RESTORE DATA
+        // FITUR BACKUP VIA WEB SHARE API (Supaya tembus WebView Android/Capacitor)
         window.exportData = async function() {
             try {
                 const data = await localforage.getItem('pdf_epub_master');
@@ -830,28 +827,48 @@
                 }
                 const dataStr = JSON.stringify(data);
                 const blob = new Blob([dataStr], { type: "application/json" });
-                const url = URL.createObjectURL(blob);
-                const a = document.createElement('a');
-                a.href = url;
                 const date = new Date().toISOString().split('T')[0];
                 const filename = `Baca_Backup_${date}.json`;
-                a.download = filename;
-                document.body.appendChild(a);
-                a.click();
-                document.body.removeChild(a);
-                URL.revokeObjectURL(url);
+                
+                const file = new File([blob], filename, { type: "application/json" });
 
-                // Notifikasi berhasil + instruksi cek folder unduhan
-                showDialog(
-                    wikiLang === 'id' ? "Backup Berhasil!" : "Backup Success!", 
-                    wikiLang === 'id' ? `File (${filename}) udah di-download. Coba cek di folder Unduhan (Downloads) HP atau PC lu.` : `File (${filename}) downloaded. Check your device's Downloads folder.`,
-                    "check-circle",
-                    [{ text: "Mengerti", primary: true }]
-                );
-
+                // Gunakan Share API kalo didukung (Paling ampuh buat Capacitor/WebView)
+                if (navigator.canShare && navigator.canShare({ files: [file] })) {
+                    await navigator.share({
+                        files: [file],
+                        title: 'Backup Baca App',
+                        text: 'Ini file backup data buku lu dari aplikasi Baca.'
+                    });
+                    
+                    showDialog(
+                        wikiLang === 'id' ? "Share Backup Sukses" : "Share Backup Success", 
+                        wikiLang === 'id' ? `File (${filename}) udah berhasil di-share/disimpan. Aman bro.` : `File (${filename}) shared/saved successfully.`,
+                        "check-circle",
+                        [{ text: "Sip", primary: true }]
+                    );
+                } else {
+                    // Fallback pake download biasa kalo Share API ga jalan di browser spesifik
+                    const url = URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = filename;
+                    document.body.appendChild(a);
+                    a.click();
+                    document.body.removeChild(a);
+                    URL.revokeObjectURL(url);
+                    
+                    showDialog(
+                        wikiLang === 'id' ? "Info Ekstraksi" : "Extraction Info", 
+                        wikiLang === 'id' ? `Karena perangkat lu ga dukung Share API, gw pake cara download biasa. Kalo ga nemu filenya, berarti OS lu ngeblokir WebView.` : `Fallback to normal download used. File might be blocked if running in WebView.`,
+                        "info",
+                        [{ text: "Mengerti", primary: true }]
+                    );
+                }
             } catch (err) {
                 console.error("Backup failed:", err);
-                showDialog("Error", "Backup gagal: " + err.message, "alert-triangle", [{ text: "Tutup", primary: true }]);
+                if (err.name !== 'AbortError') { // Error Abort terjadi kalau user batalin Share Sheet
+                    showDialog("Error", "Backup gagal: " + err.message, "alert-triangle", [{ text: "Tutup", primary: true }]);
+                }
             }
         };
 
@@ -1178,15 +1195,17 @@
         settingsSheet.addEventListener('touchend', (e) => {
             if (!isPulling) return;
             isPulling = false;
-            settingsSheet.style.transition = 'transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)';
             
             const touchEndY = e.changedTouches[0].clientY;
             const deltaY = touchEndY - touchStartY;
 
             if (deltaY > 80) { 
-                history.back(); 
-                setTimeout(() => { settingsSheet.style.transform = ''; }, 400);
+                // Clear the inline style first so the CSS class 'translate-y-full' triggers the slide-down animation properly.
+                settingsSheet.style.transition = 'transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)';
+                settingsSheet.style.transform = '';
+                history.back(); // Trigger the actual app history routing and CSS close classes
             } else {
+                settingsSheet.style.transition = 'transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)';
                 settingsSheet.style.transform = ''; 
             }
         });
