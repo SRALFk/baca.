@@ -1,6 +1,10 @@
 # Baca. 📖
 **Baca.** is a revolutionary web-based e-book reader (EPUB & PDF) designed with a strong emphasis on user privacy and interface aesthetics. Built entirely on web native technologies without any third-party server mediation—all your documents are processed and stored locally on your device.
 Release
+
+<img width="3264" height="1836" alt="20260530_151407" src="https://github.com/user-attachments/assets/55c85162-c2f3-40a6-8e83-480fde8fa934" />
+
+
 ## ✨ Material 3 Expressive Design
 The UI of **Baca.** is anything but static. We deeply adopted the **Material 3 Expressive** design principles to provide an organic, dynamic, and engaging user experience:
  * **Fluid Morphing & Animation:** UI elements like buttons and book cards don't just register clicks; they morph and react to your touch with butter-smooth bezier curve transitions.
