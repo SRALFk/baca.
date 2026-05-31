@@ -365,17 +365,36 @@
             </div>
 
             <h4 id="str-set-palette" class="text-xs font-bold opacity-70 mb-3 px-1 uppercase tracking-wider">Palet Tema</h4>
-                <div class="grid grid-cols-5 gap-3 mb-4">
-                <button onclick="setTheme('purple')" class="btn-morph w-full aspect-square rounded-2xl border border-m3-onSurfaceVariant/20" style="background: linear-gradient(to right, #D8B4FE 33.3%, #7E22CE 33.3% 66.6%, #F3E8FF 66.6%);"></button>
-                <button onclick="setTheme('green')" class="btn-morph w-full aspect-square rounded-2xl border border-m3-onSurfaceVariant/20" style="background: linear-gradient(to right, #86EFAC 33.3%, #15803D 33.3% 66.6%, #DCFCE7 66.6%);"></button>
-                <button onclick="setTheme('blue')" class="btn-morph w-full aspect-square rounded-2xl border border-m3-onSurfaceVariant/20" style="background: linear-gradient(to right, #93C5FD 33.3%, #1D4ED8 33.3% 66.6%, #DBEAFE 66.6%);"></button>
-                <button onclick="setTheme('orange')" class="btn-morph w-full aspect-square rounded-2xl border border-m3-onSurfaceVariant/20" style="background: linear-gradient(to right, #FDBA74 33.3%, #C2410C 33.3% 66.6%, #FFEDD5 66.6%);"></button>
-                <button onclick="setTheme('teal')" class="btn-morph w-full aspect-square rounded-2xl border border-m3-onSurfaceVariant/20" style="background: linear-gradient(to right, #5EEAD4 33.3%, #0F766E 33.3% 66.6%, #CCFBF1 66.6%);"></button>
-                <button onclick="setTheme('indigo')" class="btn-morph w-full aspect-square rounded-2xl border border-m3-onSurfaceVariant/20" style="background: linear-gradient(to right, #A5B4FC 33.3%, #4338CA 33.3% 66.6%, #E0E7FF 66.6%);"></button>
-                <button onclick="setTheme('cyan')" class="btn-morph w-full aspect-square rounded-2xl border border-m3-onSurfaceVariant/20" style="background: linear-gradient(to right, #67E8F9 33.3%, #0E7490 33.3% 66.6%, #CFFAFE 66.6%);"></button>
-                <button onclick="setTheme('sepia')" class="btn-morph w-full aspect-square rounded-2xl border border-m3-onSurfaceVariant/20" style="background: linear-gradient(to right, #FDE047 33.3%, #A16207 33.3% 66.6%, #FEF9C3 66.6%);"></button>
-                <button onclick="setTheme('monochrome')" class="btn-morph w-full aspect-square rounded-2xl border border-m3-onSurfaceVariant/20" style="background: linear-gradient(to right, #D4D4D4 33.3%, #404040 33.3% 66.6%, #F5F5F5 66.6%);"></button>
-                <button onclick="setTheme('rose')" class="btn-morph w-full aspect-square rounded-2xl border border-m3-onSurfaceVariant/20" style="background: linear-gradient(to right, #FDA4AF 33.3%, #BE123C 33.3% 66.6%, #FFE4E6 66.6%);"></button>
+            <div class="grid grid-cols-5 gap-3 mb-4">
+                <!-- Orchid / Lilac (Inspirasi utama ungu-pink berenergi dari gambar) -->
+                <button onclick="setTheme('orchid')" class="btn-morph w-full aspect-square rounded-2xl border border-m3-onSurfaceVariant/20 transition-transform active:scale-90" style="background: linear-gradient(135deg, #F472B6 20%, #8B5CF6 80%);" title="Orchid"></button>
+                
+                <!-- Olive Green (HIJAU TONAL YANG TETAP - Sesuai Permintaan) -->
+                <button onclick="setTheme('olive')" class="btn-morph w-full aspect-square rounded-2xl border border-m3-onSurfaceVariant/20 transition-transform active:scale-90" style="background: linear-gradient(135deg, #A3E635 20%, #3F6212 80%);" title="Olive Green"></button>
+                
+                <!-- Coral Electric (Kontras tinggi coral & warm peach) -->
+                <button onclick="setTheme('coral')" class="btn-morph w-full aspect-square rounded-2xl border border-m3-onSurfaceVariant/20 transition-transform active:scale-90" style="background: linear-gradient(135deg, #F97316 20%, #BE123C 80%);" title="Coral"></button>
+                
+                <!-- Teal Cyber (Teal terang bersatu dengan deep indigo) -->
+                <button onclick="setTheme('teal')" class="btn-morph w-full aspect-square rounded-2xl border border-m3-onSurfaceVariant/20 transition-transform active:scale-90" style="background: linear-gradient(135deg, #06B6D4 20%, #1E1B4B 80%);" title="Teal Cyber"></button>
+                
+                <!-- Lavender Night (Deep Purple & Lavender mist mewah) -->
+                <button onclick="setTheme('lavender')" class="btn-morph w-full aspect-square rounded-2xl border border-m3-onSurfaceVariant/20 transition-transform active:scale-90" style="background: linear-gradient(135deg, #C084FC 20%, #3B0764 80%);" title="Lavender"></button>
+                
+                <!-- Amber Rose (Nuansa mawar hangat, retro & ceria) -->
+                <button onclick="setTheme('rose')" class="btn-morph w-full aspect-square rounded-2xl border border-m3-onSurfaceVariant/20 transition-transform active:scale-90" style="background: linear-gradient(135deg, #FDA4AF 20%, #9F1239 80%);" title="Rose"></button>
+                
+                <!-- Lime Punch (Lime cyber super kontras dengan hitam/abu gelap) -->
+                <button onclick="setTheme('lime')" class="btn-morph w-full aspect-square rounded-2xl border border-m3-onSurfaceVariant/20 transition-transform active:scale-90" style="background: linear-gradient(135deg, #CCFBF1 20%, #0F766E 80%);" title="Teal Green"></button>
+                
+                <!-- Sand Breeze (Nuansa hangat pasir pantai & kepingan kayu retro) -->
+                <button onclick="setTheme('sand')" class="btn-morph w-full aspect-square rounded-2xl border border-m3-onSurfaceVariant/20 transition-transform active:scale-90" style="background: linear-gradient(135deg, #FEF08A 20%, #78350F 80%);" title="Sand"></button>
+                
+                <!-- Monochrome Tech (Skala abu-abu modern kontras tinggi) -->
+                <button onclick="setTheme('monochrome')" class="btn-morph w-full aspect-square rounded-2xl border border-m3-onSurfaceVariant/20 transition-transform active:scale-90" style="background: linear-gradient(135deg, #E5E5E5 20%, #171717 80%);" title="Monochrome"></button>
+                
+                <!-- Blueberry (Warna biru elektrik segar M3) -->
+                <button onclick="setTheme('blueberry')" class="btn-morph w-full aspect-square rounded-2xl border border-m3-onSurfaceVariant/20 transition-transform active:scale-90" style="background: linear-gradient(135deg, #60A5FA 20%, #1E3A8A 80%);" title="Blueberry"></button>
             </div>
             
             <h4 id="str-set-lang" class="text-xs font-bold opacity-70 mb-3 px-1 mt-6 uppercase tracking-wider">Bahasa</h4>
@@ -580,47 +599,47 @@
     <script>
         pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.worker.min.js';
 
-        // UPDATE: Material 3 Expressive Palettes 
+        // UPDATE: Material 3 Expressive & Rich Palettes 
         const M3_PALETTES = {
-            purple: { 
-                light: `--md-sys-color-primary:#7E22CE;--md-sys-color-on-primary:#FFFFFF;--md-sys-color-primary-container:#D8B4FE;--md-sys-color-on-primary-container:#3B0764;--md-sys-color-secondary-container:#E9D5FF;--md-sys-color-on-secondary-container:#581C87;--md-sys-color-tertiary-container:#F3E8FF;--md-sys-color-on-tertiary-container:#2E1065;--md-sys-color-background:#F3E8FF;--md-sys-color-on-background:#2E1065;--md-sys-color-surface:#FAF5FF;--md-sys-color-on-surface:#2E1065;--md-sys-color-surface-variant:#E9D5FF;--md-sys-color-on-surface-variant:#4C1D95;`, 
-                dark: `--md-sys-color-primary:#C084FC;--md-sys-color-on-primary:#3B0764;--md-sys-color-primary-container:#581C87;--md-sys-color-on-primary-container:#E9D5FF;--md-sys-color-secondary-container:#4C1D95;--md-sys-color-on-secondary-container:#D8B4FE;--md-sys-color-tertiary-container:#3B0764;--md-sys-color-on-tertiary-container:#F3E8FF;--md-sys-color-background:#17101F;--md-sys-color-on-background:#E9D5FF;--md-sys-color-surface:#17101F;--md-sys-color-on-surface:#E9D5FF;--md-sys-color-surface-variant:#3B0764;--md-sys-color-on-surface-variant:#D8B4FE;` 
+            orchid: { // Kombinasi ungu-pink berenergi estetik yang kaya warna
+                light: `--md-sys-color-primary:#8B5CF6;--md-sys-color-on-primary:#FFFFFF;--md-sys-color-primary-container:#F472B6;--md-sys-color-on-primary-container:#3B0764;--md-sys-color-secondary-container:#FCE7F3;--md-sys-color-on-secondary-container:#701A75;--md-sys-color-tertiary-container:#F3E8FF;--md-sys-color-on-tertiary-container:#4C1D95;--md-sys-color-background:#FAF5FF;--md-sys-color-on-background:#2E1065;--md-sys-color-surface:#FFF5FA;--md-sys-color-on-surface:#3B0764;--md-sys-color-surface-variant:#F5D0FE;--md-sys-color-on-surface-variant:#6B21A8;`,
+                dark: `--md-sys-color-primary:#C084FC;--md-sys-color-on-primary:#2E1065;--md-sys-color-primary-container:#6B21A8;--md-sys-color-on-primary-container:#FDF4FF;--md-sys-color-secondary-container:#4A044E;--md-sys-color-on-secondary-container:#FBCFE8;--md-sys-color-tertiary-container:#3B0764;--md-sys-color-on-tertiary-container:#F3E8FF;--md-sys-color-background:#12071F;--md-sys-color-on-background:#F5D0FE;--md-sys-color-surface:#1A092A;--md-sys-color-on-surface:#FDF4FF;--md-sys-color-surface-variant:#4C1D95;--md-sys-color-on-surface-variant:#F3E8FF;`
             },
-            green: { 
-                light: `--md-sys-color-primary:#15803D;--md-sys-color-on-primary:#FFFFFF;--md-sys-color-primary-container:#86EFAC;--md-sys-color-on-primary-container:#052E16;--md-sys-color-secondary-container:#BBF7D0;--md-sys-color-on-secondary-container:#064E3B;--md-sys-color-tertiary-container:#DCFCE7;--md-sys-color-on-tertiary-container:#022C22;--md-sys-color-background:#DCFCE7;--md-sys-color-on-background:#052E16;--md-sys-color-surface:#F0FDF4;--md-sys-color-on-surface:#052E16;--md-sys-color-surface-variant:#BBF7D0;--md-sys-color-on-surface-variant:#166534;`, 
-                dark: `--md-sys-color-primary:#4ADE80;--md-sys-color-on-primary:#052E16;--md-sys-color-primary-container:#166534;--md-sys-color-on-primary-container:#BBF7D0;--md-sys-color-secondary-container:#064E3B;--md-sys-color-on-secondary-container:#86EFAC;--md-sys-color-tertiary-container:#022C22;--md-sys-color-on-tertiary-container:#DCFCE7;--md-sys-color-background:#0A1F12;--md-sys-color-on-background:#BBF7D0;--md-sys-color-surface:#0A1F12;--md-sys-color-on-surface:#BBF7D0;--md-sys-color-surface-variant:#166534;--md-sys-color-on-surface-variant:#86EFAC;` 
+            olive: { // HIJAU TONAL TETAP & NYAMAN (Olive / Hijau Tua)
+                light: `--md-sys-color-primary:#3F6212;--md-sys-color-on-primary:#FFFFFF;--md-sys-color-primary-container:#D9F99D;--md-sys-color-on-primary-container:#1A2E05;--md-sys-color-secondary-container:#ECFDF5;--md-sys-color-on-secondary-container:#064E3B;--md-sys-color-tertiary-container:#E2E8F0;--md-sys-color-on-tertiary-container:#0F172A;--md-sys-color-background:#F7FEE7;--md-sys-color-on-background:#1A2E05;--md-sys-color-surface:#FBFDF0;--md-sys-color-on-surface:#1A2E05;--md-sys-color-surface-variant:#D9F99D;--md-sys-color-on-surface-variant:#3F6212;`, 
+                dark: `--md-sys-color-primary:#A3E635;--md-sys-color-on-primary:#1A2E05;--md-sys-color-primary-container:#3F6212;--md-sys-color-on-primary-container:#ECFCCB;--md-sys-color-secondary-container:#064E3B;--md-sys-color-on-secondary-container:#A7F3D0;--md-sys-color-tertiary-container:#1E293B;--md-sys-color-on-tertiary-container:#F1F5F9;--md-sys-color-background:#081300;--md-sys-color-on-background:#ECFCCB;--md-sys-color-surface:#0D1F00;--md-sys-color-on-surface:#ECFCCB;--md-sys-color-surface-variant:#3F6212;--md-sys-color-on-surface-variant:#D9F99D;` 
             },
-            blue: { 
-                light: `--md-sys-color-primary:#1D4ED8;--md-sys-color-on-primary:#FFFFFF;--md-sys-color-primary-container:#93C5FD;--md-sys-color-on-primary-container:#1E3A8A;--md-sys-color-secondary-container:#BFDBFE;--md-sys-color-on-secondary-container:#1E40AF;--md-sys-color-tertiary-container:#DBEAFE;--md-sys-color-on-tertiary-container:#172554;--md-sys-color-background:#DBEAFE;--md-sys-color-on-background:#1E3A8A;--md-sys-color-surface:#EFF6FF;--md-sys-color-on-surface:#1E3A8A;--md-sys-color-surface-variant:#BFDBFE;--md-sys-color-on-surface-variant:#1D4ED8;`, 
-                dark: `--md-sys-color-primary:#60A5FA;--md-sys-color-on-primary:#1E3A8A;--md-sys-color-primary-container:#1E40AF;--md-sys-color-on-primary-container:#BFDBFE;--md-sys-color-secondary-container:#1D4ED8;--md-sys-color-on-secondary-container:#93C5FD;--md-sys-color-tertiary-container:#172554;--md-sys-color-on-tertiary-container:#DBEAFE;--md-sys-color-background:#0B1426;--md-sys-color-on-background:#BFDBFE;--md-sys-color-surface:#0B1426;--md-sys-color-on-surface:#BFDBFE;--md-sys-color-surface-variant:#1E40AF;--md-sys-color-on-surface-variant:#93C5FD;` 
+            coral: { // Warna coral-orange berenergi tinggi yang hangat dan ekspresif
+                light: `--md-sys-color-primary:#BE123C;--md-sys-color-on-primary:#FFFFFF;--md-sys-color-primary-container:#FFD2C4;--md-sys-color-on-primary-container:#430512;--md-sys-color-secondary-container:#FCE8E6;--md-sys-color-on-secondary-container:#7C2D12;--md-sys-color-tertiary-container:#FFF7ED;--md-sys-color-on-tertiary-container:#2A0A02;--md-sys-color-background:#FFF1F2;--md-sys-color-on-background:#430512;--md-sys-color-surface:#FFFBFB;--md-sys-color-on-surface:#430512;--md-sys-color-surface-variant:#FFCCD5;--md-sys-color-on-surface-variant:#BE123C;`,
+                dark: `--md-sys-color-primary:#FDA4AF;--md-sys-color-on-primary:#4C0519;--md-sys-color-primary-container:#9F1239;--md-sys-color-on-primary-container:#FFCCD5;--md-sys-color-secondary-container:#7C2D12;--md-sys-color-on-secondary-container:#FFD2C4;--md-sys-color-tertiary-container:#2A0A02;--md-sys-color-on-tertiary-container:#FFF7ED;--md-sys-color-background:#1F030B;--md-sys-color-on-background:#FFD2C4;--md-sys-color-surface:#2A0410;--md-sys-color-on-surface:#FFD2C4;--md-sys-color-surface-variant:#9F1239;--md-sys-color-on-surface-variant:#FDA4AF;`
             },
-            orange: { 
-                light: `--md-sys-color-primary:#C2410C;--md-sys-color-on-primary:#FFFFFF;--md-sys-color-primary-container:#FDBA74;--md-sys-color-on-primary-container:#431407;--md-sys-color-secondary-container:#FED7AA;--md-sys-color-on-secondary-container:#7C2D12;--md-sys-color-tertiary-container:#FFEDD5;--md-sys-color-on-tertiary-container:#2A0A02;--md-sys-color-background:#FFEDD5;--md-sys-color-on-background:#431407;--md-sys-color-surface:#FFF7ED;--md-sys-color-on-surface:#431407;--md-sys-color-surface-variant:#FED7AA;--md-sys-color-on-surface-variant:#9A3412;`, 
-                dark: `--md-sys-color-primary:#FB923C;--md-sys-color-on-primary:#431407;--md-sys-color-primary-container:#9A3412;--md-sys-color-on-primary-container:#FED7AA;--md-sys-color-secondary-container:#7C2D12;--md-sys-color-on-secondary-container:#FDBA74;--md-sys-color-tertiary-container:#2A0A02;--md-sys-color-on-tertiary-container:#FFEDD5;--md-sys-color-background:#221005;--md-sys-color-on-background:#FED7AA;--md-sys-color-surface:#221005;--md-sys-color-on-surface:#FED7AA;--md-sys-color-surface-variant:#9A3412;--md-sys-color-on-surface-variant:#FDBA74;` 
+            teal: { // Teal siberian yang cerah berpadu dengan kontras hitam-biru gelap
+                light: `--md-sys-color-primary:#0E7490;--md-sys-color-on-primary:#FFFFFF;--md-sys-color-primary-container:#A5F3FC;--md-sys-color-on-primary-container:#083344;--md-sys-color-secondary-container:#E0F2FE;--md-sys-color-on-secondary-container:#0369A1;--md-sys-color-tertiary-container:#F0FDFA;--md-sys-color-on-tertiary-container:#0F172A;--md-sys-color-background:#ECFEFF;--md-sys-color-on-background:#083344;--md-sys-color-surface:#F4FEFF;--md-sys-color-on-surface:#083344;--md-sys-color-surface-variant:#A5F3FC;--md-sys-color-on-surface-variant:#0E7490;`,
+                dark: `--md-sys-color-primary:#22D3EE;--md-sys-color-on-primary:#083344;--md-sys-color-primary-container:#0E7490;--md-sys-color-on-primary-container:#E0F2FE;--md-sys-color-secondary-container:#075985;--md-sys-color-on-secondary-container:#38BDF8;--md-sys-color-tertiary-container:#115E59;--md-sys-color-on-tertiary-container:#F0FDFA;--md-sys-color-background:#020D12;--md-sys-color-on-background:#A5F3FC;--md-sys-color-surface:#041822;--md-sys-color-on-surface:#E0F2FE;--md-sys-color-surface-variant:#086F87;--md-sys-color-on-surface-variant:#A5F3FC;`
             },
-            teal: { 
-                light: `--md-sys-color-primary:#0F766E;--md-sys-color-on-primary:#FFFFFF;--md-sys-color-primary-container:#5EEAD4;--md-sys-color-on-primary-container:#042F2E;--md-sys-color-secondary-container:#99F6E4;--md-sys-color-on-secondary-container:#115E59;--md-sys-color-tertiary-container:#CCFBF1;--md-sys-color-on-tertiary-container:#022C22;--md-sys-color-background:#CCFBF1;--md-sys-color-on-background:#042F2E;--md-sys-color-surface:#F0FDFA;--md-sys-color-on-surface:#042F2E;--md-sys-color-surface-variant:#99F6E4;--md-sys-color-on-surface-variant:#115E59;`, 
-                dark: `--md-sys-color-primary:#2DD4BF;--md-sys-color-on-primary:#042F2E;--md-sys-color-primary-container:#115E59;--md-sys-color-on-primary-container:#99F6E4;--md-sys-color-secondary-container:#0F766E;--md-sys-color-on-secondary-container:#5EEAD4;--md-sys-color-tertiary-container:#022C22;--md-sys-color-on-tertiary-container:#CCFBF1;--md-sys-color-background:#051D1A;--md-sys-color-on-background:#99F6E4;--md-sys-color-surface:#051D1A;--md-sys-color-on-surface:#99F6E4;--md-sys-color-surface-variant:#115E59;--md-sys-color-on-surface-variant:#5EEAD4;` 
+            lavender: { // Lavender kontras tinggi mewah
+                light: `--md-sys-color-primary:#6B21A8;--md-sys-color-on-primary:#FFFFFF;--md-sys-color-primary-container:#E9D5FF;--md-sys-color-on-primary-container:#2E1065;--md-sys-color-secondary-container:#F3E8FF;--md-sys-color-on-secondary-container:#581C87;--md-sys-color-tertiary-container:#FAE8FF;--md-sys-color-on-tertiary-container:#701A75;--md-sys-color-background:#FAF5FF;--md-sys-color-on-background:#2E1065;--md-sys-color-surface:#FCF9FF;--md-sys-color-on-surface:#2E1065;--md-sys-color-surface-variant:#E9D5FF;--md-sys-color-on-surface-variant:#6B21A8;`,
+                dark: `--md-sys-color-primary:#D8B4FE;--md-sys-color-on-primary:#2E1065;--md-sys-color-primary-container:#581C87;--md-sys-color-on-primary-container:#F3E8FF;--md-sys-color-secondary-container:#4C1D95;--md-sys-color-on-secondary-container:#E9D5FF;--md-sys-color-tertiary-container:#4A044E;--md-sys-color-on-tertiary-container:#FAE8FF;--md-sys-color-background:#0B0314;--md-sys-color-on-background:#E9D5FF;--md-sys-color-surface:#140824;--md-sys-color-on-surface:#E9D5FF;--md-sys-color-surface-variant:#4C1D95;--md-sys-color-on-surface-variant:#E9D5FF;`
             },
-            indigo: { 
-                light: `--md-sys-color-primary:#4338CA;--md-sys-color-on-primary:#FFFFFF;--md-sys-color-primary-container:#A5B4FC;--md-sys-color-on-primary-container:#1E1B4B;--md-sys-color-secondary-container:#C7D2FE;--md-sys-color-on-secondary-container:#312E81;--md-sys-color-tertiary-container:#E0E7FF;--md-sys-color-on-tertiary-container:#1E1B4B;--md-sys-color-background:#E0E7FF;--md-sys-color-on-background:#1E1B4B;--md-sys-color-surface:#EEF2FF;--md-sys-color-on-surface:#1E1B4B;--md-sys-color-surface-variant:#C7D2FE;--md-sys-color-on-surface-variant:#3730A3;`, 
-                dark: `--md-sys-color-primary:#818CF8;--md-sys-color-on-primary:#1E1B4B;--md-sys-color-primary-container:#3730A3;--md-sys-color-on-primary-container:#C7D2FE;--md-sys-color-secondary-container:#312E81;--md-sys-color-on-secondary-container:#A5B4FC;--md-sys-color-tertiary-container:#1E1B4B;--md-sys-color-on-tertiary-container:#E0E7FF;--md-sys-color-background:#0E0C20;--md-sys-color-on-background:#C7D2FE;--md-sys-color-surface:#0E0C20;--md-sys-color-on-surface:#C7D2FE;--md-sys-color-surface-variant:#3730A3;--md-sys-color-on-surface-variant:#A5B4FC;` 
+            rose: { 
+                light: `--md-sys-color-primary:#BE123C;--md-sys-color-on-primary:#FFFFFF;--md-sys-color-primary-container:#FDA4AF;--md-sys-color-on-primary-container:#4C0519;--md-sys-color-secondary-container:#FECDD3;--md-sys-color-on-secondary-container:#881337;--md-sys-color-tertiary-container:#FFE4E6;--md-sys-color-on-tertiary-container:#4C0519;--md-sys-color-background:#FFE4E6;--md-sys-color-on-background:#4C0519;--md-sys-color-surface:#FFF1F2;--md-sys-color-on-surface:#4C0519;--md-sys-color-surface-variant:#FECDD3;--md-sys-color-on-surface-variant:#9F1239;`, 
+                dark: `--md-sys-color-primary:#FB7185;--md-sys-color-on-primary:#4C0519;--md-sys-color-primary-container:#9F1239;--md-sys-color-on-primary-container:#FECDD3;--md-sys-color-secondary-container:#881337;--md-sys-color-on-secondary-container:#FDA4AF;--md-sys-color-tertiary-container:#4C0519;--md-sys-color-on-tertiary-container:#FFE4E6;--md-sys-color-background:#240910;--md-sys-color-on-background:#FECDD3;--md-sys-color-surface:#240910;--md-sys-color-on-surface:#FECDD3;--md-sys-color-surface-variant:#9F1239;--md-sys-color-on-surface-variant:#FDA4AF;` 
             },
-            cyan: { 
-                light: `--md-sys-color-primary:#0E7490;--md-sys-color-on-primary:#FFFFFF;--md-sys-color-primary-container:#67E8F9;--md-sys-color-on-primary-container:#083344;--md-sys-color-secondary-container:#A5F3FC;--md-sys-color-on-secondary-container:#164E63;--md-sys-color-tertiary-container:#CFFAFE;--md-sys-color-on-tertiary-container:#083344;--md-sys-color-background:#CFFAFE;--md-sys-color-on-background:#083344;--md-sys-color-surface:#ECFEFF;--md-sys-color-on-surface:#083344;--md-sys-color-surface-variant:#A5F3FC;--md-sys-color-on-surface-variant:#155E75;`, 
-                dark: `--md-sys-color-primary:#22D3EE;--md-sys-color-on-primary:#083344;--md-sys-color-primary-container:#155E75;--md-sys-color-on-primary-container:#A5F3FC;--md-sys-color-secondary-container:#164E63;--md-sys-color-on-secondary-container:#67E8F9;--md-sys-color-tertiary-container:#083344;--md-sys-color-on-tertiary-container:#CFFAFE;--md-sys-color-background:#071B24;--md-sys-color-on-background:#A5F3FC;--md-sys-color-surface:#071B24;--md-sys-color-on-surface:#A5F3FC;--md-sys-color-surface-variant:#155E75;--md-sys-color-on-surface-variant:#67E8F9;` 
+            lime: { // Minty Fresh modern (Hijau Teal & Mint ceria)
+                light: `--md-sys-color-primary:#0F766E;--md-sys-color-on-primary:#FFFFFF;--md-sys-color-primary-container:#CCFBF1;--md-sys-color-on-primary-container:#115E59;--md-sys-color-secondary-container:#E6FFFA;--md-sys-color-on-secondary-container:#0F766E;--md-sys-color-tertiary-container:#F0FDF4;--md-sys-color-on-tertiary-container:#166534;--md-sys-color-background:#F0FDF4;--md-sys-color-on-background:#115E59;--md-sys-color-surface:#F7FEFA;--md-sys-color-on-surface:#115E59;--md-sys-color-surface-variant:#CCFBF1;--md-sys-color-on-surface-variant:#0F766E;`,
+                dark: `--md-sys-color-primary:#2DD4BF;--md-sys-color-on-primary:#042F2E;--md-sys-color-primary-container:#115E59;--md-sys-color-on-primary-container:#CCFBF1;--md-sys-color-secondary-container:#0D2E27;--md-sys-color-on-secondary-container:#2DD4BF;--md-sys-color-tertiary-container:#14532D;--md-sys-color-on-tertiary-container:#F0FDF4;--md-sys-color-background:#020F0D;--md-sys-color-on-background:#CCFBF1;--md-sys-color-surface:#041C18;--md-sys-color-on-surface:#CCFBF1;--md-sys-color-surface-variant:#115E59;--md-sys-color-on-surface-variant:#CCFBF1;`
             },
-            sepia: { 
-                light: `--md-sys-color-primary:#A16207;--md-sys-color-on-primary:#FFFFFF;--md-sys-color-primary-container:#FDE047;--md-sys-color-on-primary-container:#422006;--md-sys-color-secondary-container:#FEF08A;--md-sys-color-on-secondary-container:#713F12;--md-sys-color-tertiary-container:#FEF9C3;--md-sys-color-on-tertiary-container:#422006;--md-sys-color-background:#FEF9C3;--md-sys-color-on-background:#422006;--md-sys-color-surface:#FEFCE8;--md-sys-color-on-surface:#422006;--md-sys-color-surface-variant:#FEF08A;--md-sys-color-on-surface-variant:#854D0E;`, 
-                dark: `--md-sys-color-primary:#FACC15;--md-sys-color-on-primary:#422006;--md-sys-color-primary-container:#854D0E;--md-sys-color-on-primary-container:#FEF08A;--md-sys-color-secondary-container:#713F12;--md-sys-color-on-secondary-container:#FDE047;--md-sys-color-tertiary-container:#422006;--md-sys-color-on-tertiary-container:#FEF9C3;--md-sys-color-background:#211706;--md-sys-color-on-background:#FEF08A;--md-sys-color-surface:#211706;--md-sys-color-on-surface:#FEF08A;--md-sys-color-surface-variant:#854D0E;--md-sys-color-on-surface-variant:#FDE047;` 
+            sand: { // Nuansa tanah, hangat, retro nyaman seperti kertas tua
+                light: `--md-sys-color-primary:#78350F;--md-sys-color-on-primary:#FFFFFF;--md-sys-color-primary-container:#FEF08A;--md-sys-color-on-primary-container:#451A03;--md-sys-color-secondary-container:#FEF9C3;--md-sys-color-on-secondary-container:#854D0E;--md-sys-color-tertiary-container:#FFFBEB;--md-sys-color-on-tertiary-container:#78350F;--md-sys-color-background:#FEFCE8;--md-sys-color-on-background:#451A03;--md-sys-color-surface:#FFFDF5;--md-sys-color-on-surface:#451A03;--md-sys-color-surface-variant:#FEF08A;--md-sys-color-on-surface-variant:#78350F;`,
+                dark: `--md-sys-color-primary:#FACC15;--md-sys-color-on-primary:#451A03;--md-sys-color-primary-container:#78350F;--md-sys-color-on-primary-container:#FEF9C3;--md-sys-color-secondary-container:#422006;--md-sys-color-on-secondary-container:#FEF08A;--md-sys-color-tertiary-container:#1F1605;--md-sys-color-on-tertiary-container:#FFFBEB;--md-sys-color-background:#120B02;--md-sys-color-on-background:#FEF9C3;--md-sys-color-surface:#1C1204;--md-sys-color-on-surface:#FEF9C3;--md-sys-color-surface-variant:#78350F;--md-sys-color-on-surface-variant:#FEF08A;`
             },
             monochrome: { 
                 light: `--md-sys-color-primary:#404040;--md-sys-color-on-primary:#FFFFFF;--md-sys-color-primary-container:#D4D4D4;--md-sys-color-on-primary-container:#171717;--md-sys-color-secondary-container:#E5E5E5;--md-sys-color-on-secondary-container:#262626;--md-sys-color-tertiary-container:#F5F5F5;--md-sys-color-on-tertiary-container:#171717;--md-sys-color-background:#F5F5F5;--md-sys-color-on-background:#171717;--md-sys-color-surface:#FAFAFA;--md-sys-color-on-surface:#171717;--md-sys-color-surface-variant:#E5E5E5;--md-sys-color-on-surface-variant:#525252;`, 
                 dark: `--md-sys-color-primary:#A3A3A3;--md-sys-color-on-primary:#171717;--md-sys-color-primary-container:#525252;--md-sys-color-on-primary-container:#E5E5E5;--md-sys-color-secondary-container:#262626;--md-sys-color-on-secondary-container:#D4D4D4;--md-sys-color-tertiary-container:#171717;--md-sys-color-on-tertiary-container:#F5F5F5;--md-sys-color-background:#141414;--md-sys-color-on-background:#E5E5E5;--md-sys-color-surface:#141414;--md-sys-color-on-surface:#E5E5E5;--md-sys-color-surface-variant:#525252;--md-sys-color-on-surface-variant:#D4D4D4;` 
             },
-            rose: { 
-                light: `--md-sys-color-primary:#BE123C;--md-sys-color-on-primary:#FFFFFF;--md-sys-color-primary-container:#FDA4AF;--md-sys-color-on-primary-container:#4C0519;--md-sys-color-secondary-container:#FECDD3;--md-sys-color-on-secondary-container:#881337;--md-sys-color-tertiary-container:#FFE4E6;--md-sys-color-on-tertiary-container:#4C0519;--md-sys-color-background:#FFE4E6;--md-sys-color-on-background:#4C0519;--md-sys-color-surface:#FFF1F2;--md-sys-color-on-surface:#4C0519;--md-sys-color-surface-variant:#FECDD3;--md-sys-color-on-surface-variant:#9F1239;`, 
-                dark: `--md-sys-color-primary:#FB7185;--md-sys-color-on-primary:#4C0519;--md-sys-color-primary-container:#9F1239;--md-sys-color-on-primary-container:#FECDD3;--md-sys-color-secondary-container:#881337;--md-sys-color-on-secondary-container:#FDA4AF;--md-sys-color-tertiary-container:#4C0519;--md-sys-color-on-tertiary-container:#FFE4E6;--md-sys-color-background:#240910;--md-sys-color-on-background:#FECDD3;--md-sys-color-surface:#240910;--md-sys-color-on-surface:#FECDD3;--md-sys-color-surface-variant:#9F1239;--md-sys-color-on-surface-variant:#FDA4AF;` 
+            blueberry: { 
+                light: `--md-sys-color-primary:#1D4ED8;--md-sys-color-on-primary:#FFFFFF;--md-sys-color-primary-container:#93C5FD;--md-sys-color-on-primary-container:#1E3A8A;--md-sys-color-secondary-container:#BFDBFE;--md-sys-color-on-secondary-container:#1E40AF;--md-sys-color-tertiary-container:#DBEAFE;--md-sys-color-on-tertiary-container:#172554;--md-sys-color-background:#DBEAFE;--md-sys-color-on-background:#1E3A8A;--md-sys-color-surface:#EFF6FF;--md-sys-color-on-surface:#1E3A8A;--md-sys-color-surface-variant:#BFDBFE;--md-sys-color-on-surface-variant:#1D4ED8;`, 
+                dark: `--md-sys-color-primary:#60A5FA;--md-sys-color-on-primary:#1E3A8A;--md-sys-color-primary-container:#1E40AF;--md-sys-color-on-primary-container:#BFDBFE;--md-sys-color-secondary-container:#1D4ED8;--md-sys-color-on-secondary-container:#93C5FD;--md-sys-color-tertiary-container:#172554;--md-sys-color-on-tertiary-container:#DBEAFE;--md-sys-color-background:#0B1426;--md-sys-color-on-background:#BFDBFE;--md-sys-color-surface:#0B1426;--md-sys-color-on-surface:#BFDBFE;--md-sys-color-surface-variant:#1E40AF;--md-sys-color-on-surface-variant:#93C5FD;` 
             }
         };
 
@@ -748,7 +767,7 @@
         function pushAppHistory(stateName) { history.pushState({ state: stateName }, '', `#${stateName}`); }
 
         let isDark = localStorage.getItem('theme') !== 'light'; 
-        let currentThemeKey = localStorage.getItem('m3-key') || 'purple';
+        let currentThemeKey = localStorage.getItem('m3-key') || 'orchid';
         let isAmoled = localStorage.getItem('amoled') === 'true';
         let wikiLang = localStorage.getItem('wiki_lang') || 'id';
 
@@ -1410,7 +1429,7 @@
             document.documentElement.style.setProperty('--reader-font', fontCss);
             localStorage.setItem('typo_prefs', JSON.stringify(typoPrefs)); syncTypoUI();
         }
-                function syncTypoUI() {
+        function syncTypoUI() {
             const maps = { size: { '1rem': 'typo-sz-sm', '1.2rem': 'typo-sz-md', '1.5rem': 'typo-sz-lg' }, align: { 'left': 'typo-al-left', 'center': 'typo-al-center', 'justify': 'typo-al-justify' }, font: { 'Lora': 'typo-fn-lora','Merriweather':'typo-fn-merri','Playfair Display':'typo-fn-playfair', 'Inter': 'typo-fn-inter', 'Space Mono': 'typo-fn-mono', 'Google Sans Flex': 'typo-fn-google' } };
             
             Object.values(maps.size).forEach(id => { document.getElementById(id).classList.remove('bg-m3-primary', 'text-m3-onPrimary'); document.getElementById(id).classList.add('text-m3-onSurfaceVariant'); });
@@ -1441,14 +1460,20 @@
             let bgStyle = ""; let textOverlay = ""; let baseClass = "";
             if(book.coverBase64) {
                 bgStyle = `background-image: url('${book.coverBase64}'); background-size: cover; background-position: top center;`;
-                baseClass = "text-white border-none outline-none ring-0"; 
+                baseClass = "text-white border-none outline-none ring-0 shadow-lg"; 
                 textOverlay = `<div class="absolute inset-x-0 bottom-0 h-[80%] bg-gradient-to-t from-black via-black/40 to-transparent pointer-events-none z-0 rounded-b-inherit border-none outline-none"></div>`;
             } else {
-                const colors = ['bg-m3-primaryContainer text-m3-onPrimaryContainer', 'bg-m3-secondaryContainer text-m3-onSecondaryContainer', 'bg-m3-surfaceVariant text-m3-onSurfaceVariant'];
-                baseClass = colors[index % 3];
+                // Kombinasi warna acak Material 3 ekspresif yang kontras & indah
+                const colors = [
+                    'bg-m3-primaryContainer text-m3-onPrimaryContainer', 
+                    'bg-m3-secondaryContainer text-m3-onSecondaryContainer', 
+                    'bg-m3-tertiaryContainer text-m3-onTertiaryContainer',
+                    'bg-m3-surfaceVariant text-m3-onSurfaceVariant'
+                ];
+                baseClass = colors[index % colors.length];
             }
 
-            const dimensionClass = isSlider ? "w-64 h-40 shrink-0 snap-start" : "aspect-[3/4.5] w-full";
+            const dimensionClass = isSlider ? "w-64 h-40 shrink-0 snap-start" : "aspect-[3/4.5] w-full shadow-md hover:shadow-xl transition-shadow";
 
             let pressTimer = null; let isPressing = false; let hasLongPressed = false;
             const handleStart = (e) => {
@@ -1479,7 +1504,7 @@
                 openBook(book); 
             });
 
-            card.className = `${baseClass} ${shapeClass} ${dimensionClass} p-3 relative cursor-pointer card-morph flex flex-col justify-between overflow-hidden border-none outline-none ring-0`;
+            card.className = `${baseClass} ${shapeClass} ${dimensionClass} p-4 relative cursor-pointer card-morph flex flex-col justify-between overflow-hidden border-none outline-none ring-0`;
             card.style = bgStyle;
 
             let batchOverlayHTML = '';
@@ -1502,7 +1527,7 @@
                             <h3 class="font-bold text-sm leading-tight line-clamp-2 drop-shadow-md ${book.coverBase64 ? 'text-white' : ''}">${book.title}</h3>
                             <div class="w-full mt-2 border-none">
                                 <div class="flex justify-between text-[0.65rem] font-bold opacity-90 mb-1 ${book.coverBase64 ? 'text-white' : ''}"><span>${progress}%</span></div>
-                                <div class="h-1 w-full bg-black/20 dark:bg-white/20 rounded-full overflow-hidden border-none">
+                                <div class="h-1.5 w-full bg-black/20 dark:bg-white/20 rounded-full overflow-hidden border-none">
                                     <div class="h-full ${book.coverBase64 ? 'bg-white' : 'bg-m3-primary dark:bg-m3-primaryContainer'} rounded-full border-none" style="width: ${progress}%"></div>
                                 </div>
                             </div>
@@ -1523,7 +1548,7 @@
                                 <div class="flex justify-between text-[0.6rem] font-bold opacity-90 mb-1 ${book.coverBase64 ? 'text-white' : ''}">
                                     <span>${progress}%</span>
                                 </div>
-                                <div class="h-1 w-full bg-black/20 dark:bg-white/20 rounded-full overflow-hidden border-none">
+                                <div class="h-1.5 w-full bg-black/20 dark:bg-white/20 rounded-full overflow-hidden border-none">
                                     <div class="h-full ${book.coverBase64 ? 'bg-white' : 'bg-m3-primary dark:bg-m3-primaryContainer'} rounded-full border-none" style="width: ${progress}%"></div>
                                 </div>
                             </div>
@@ -1582,7 +1607,7 @@
                     { text: "Batal", primary: false },
                     { text: "Hapus", primary: true, action: async () => {
                         window.closeDialog();
-                        library = library.filter(b => b.id !== activeOptsId); 
+                        library = library.filter(b => !selectedForDelete.includes(b.id) && b.id !== activeOptsId); 
                         await localforage.setItem('pdf_epub_master', library); 
                         history.back(); setTimeout(() => renderLibrary(DOM.globalSearch.value), 350);
                     }}
