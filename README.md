@@ -7,8 +7,7 @@
 **Baca.** is a lightweight, local-first e-book reader (EPUB & PDF) built because I wanted a beautiful reading experience without the bloat. It runs entirely on web-native tech with zero backend. No servers, no tracking, no cloud uploads. Your books are processed and stored 100% locally on your device for absolute privacy.
 
 ## Logo
-<img width="3264" height="1836" alt="20260530_151407" src="https://github.com/user-attachments/assets/55c85162-c2f3-40a6-8e83-480fde8fa934" />
-
+<img width="100%" alt="Baca Logo" src="https://github.com/user-attachments/assets/55c85162-c2f3-40a6-8e83-480fde8fa934" />
 
 ## ✨ Material 3 Expressive Design
 The UI of **Baca.** is anything but static. We deeply adopted the **Material 3 Expressive** design principles to provide an organic, dynamic, and engaging user experience:
@@ -18,12 +17,12 @@ The UI of **Baca.** is anything but static. We deeply adopted the **Material 3 E
  * **True AMOLED Dark Mode:** Features a pitch-black dark mode optimized for OLED/AMOLED screens to save battery, complete with perfectly symmetrical and satisfying toggle switches.
 
 ## 📷 Screenshot
-<img width="3264" height="1820" alt="20260530_064040" src="https://github.com/user-attachments/assets/fd49fca3-5340-4e44-bf2d-8f84d834000e" />
+<img width="100%" alt="Baca Screenshot" src="https://github.com/user-attachments/assets/fd49fca3-5340-4e44-bf2d-8f84d834000e" />
 
 ## 🚀 Key Features
- * **Privacy-Focused:.** Zero cloud uploads. We utilize localforage (IndexedDB) to parse, render, and save your books and reading progress locally. Your data belongs to you.
+ * **Privacy-Focused:** Zero cloud uploads. We utilize localforage (IndexedDB) to parse, render, and save your books and reading progress locally. Your data belongs to you.
  * **Smart Annotations & Highlights:** Highlight crucial texts in multiple colors (Yellow, Green, Pink) and attach your personal notes directly inside the book context.
- * **AI Dictionary & Definition Lookup:** Stumbled upon a difficult word? Just select it, and our AI feature will pull definitions seamlessly from Wikipedia, Wiktionary, and real-time dictionaries.
+ * **AI Dictionary & Definition Lookup:** Stumbled upon a difficult word? Just select it, and our AI feature will pull definitions seamlessly from Wikipedia, Wiktionary, and real-time dictionaries via the Gemini API.
  * **In-Book Search Engine:** A highly intuitive search bar integrated right into the side panel. Instantly sweeps through the book and auto-scrolls to the exact highlighted paragraph.
  * **Typography Control:** Ultimate reading comfort. Adjust text size, paragraph alignment, and pick from premium fonts (*Lora, Merriweather, Playfair, Inter, Space Mono*).
  * **Bilingual Support:** Interface is fully available in English and Indonesian.
@@ -34,7 +33,7 @@ Most e-book readers on the market fall into two frustrating extremes: they are e
 
 **Baca.** exists to break that compromise. The logic is simple:
 
-* **Zero Feature Creep (Only ~4MB):** We don't shove unnecessary tools down your throat. No robotic voices, no social sharing buttons, no bloatware. Just a pure, uncompromised visual reading experience.
+* **Zero Feature Creep (~4MB Size):** We don't shove unnecessary tools down your throat. No robotic voices, no social sharing buttons, no bloatware. Just a pure, uncompromised visual reading experience.
 * **Open-Source Doesn't Mean Ugly:** Just because an app is free doesn't mean it should look cheap. By deeply integrating Material 3 Expressive, navigating your library actually feels fluid and satisfying.
 * **True Local Privacy:** Most "free" apps harvest your reading habits or force you to upload your PDFs to their servers. Baca is strictly local-first. Your academic journals and personal books are parsed and stored locally on your device via IndexedDB. Zero servers involved.
    
@@ -52,6 +51,12 @@ Most e-book readers on the market fall into two frustrating extremes: they are e
  * **JSZip** (Local EPUB file extraction).
  * **LocalForage** (Asynchronous storage management).
  * **Lucide Icons** (Clean and modern iconography).
+
+## 🤝 Contributing (The "Monster Code" Disclaimer)
+I focused heavily on the UI/UX and core logic to make this app feel as native and smooth as possible. Because of that, the current codebase is essentially a single-file monolith (a bit of a "monster" HTML file). 
+
+If any developers out there want to help refactor, modularize the code, or improve the architecture, **Pull Requests are highly welcome and deeply appreciated!** Let's build a better open-source reading experience together.
+
 ## ☕ Support
 This application is developed for the reading community that craves comfort and privacy. If you find this app useful and want to support its ongoing development, consider buying the developer a coffee!
 
