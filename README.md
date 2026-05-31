@@ -7,7 +7,8 @@
 **Baca.** is a lightweight, local-first e-book reader (EPUB & PDF) built because I wanted a beautiful reading experience without the bloat. It runs entirely on web-native tech with zero backend. No servers, no tracking, no cloud uploads. Your books are processed and stored 100% locally on your device for absolute privacy.
 
 ## Logo
-<img width="100%" alt="Baca Logo" src="https://github.com/user-attachments/assets/55c85162-c2f3-40a6-8e83-480fde8fa934" />
+<img width="1920" height="1051" alt="TV and Film Press Kit Presentation in Blue Black White Dark and Moody Style_20260531_135911_0000" src="https://github.com/user-attachments/assets/0d692c21-a109-458f-837d-959ba5d81867" />
+
 
 ## ✨ Material 3 Expressive Design
 The UI of **Baca.** is anything but static. We deeply adopted the **Material 3 Expressive** design principles to provide an organic, dynamic, and engaging user experience:
